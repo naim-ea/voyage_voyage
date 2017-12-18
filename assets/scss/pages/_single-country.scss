@@ -1,11 +1,11 @@
 .single-country{
 
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     background: $white-alt;
     display: grid;
     grid-template-columns: [column1] 80px [content] 800px [middle] auto [column4] 80px;
-    grid-template-rows: [rowstart] 30px [title] 50px [space] 20px [continent] 30px [space] 20px [capital] 30px [space] 10px [data] 100px [anthem] 75px [discover] auto [rowend] 30px;
+    grid-template-rows: [rowstart] 20px [title] 50px [space] 10px [continent] 30px [space] 8px [capital] 30px [data] 80px [anthem] 75px [discover] auto [rowend] 20px;
     background-image: url(../img/inde.png);
     background-position: bottom right;
     background-repeat: no-repeat;
@@ -13,6 +13,7 @@
 
     &-title{
         grid-column-start: content;
+        grid-column-end: column4;
         grid-row-start: title;
         font-family: Oxygen-Bold;
         color: $title-color;
@@ -45,9 +46,10 @@
 
     &-continent{
         grid-column-start: content;
+        grid-column-end: column4;
         grid-row-start: continent;
         font-family: Oxygen-Regular;
-        font-size: 30px;
+        font-size: 20px;
         color: $black-alt;
 
         strong{
@@ -57,9 +59,10 @@
 
     &-capital{
         grid-column-start: content;
+        grid-column-end: column4;
         grid-row-start: capital;
         font-family: Oxygen-Regular;
-        font-size: 30px;
+        font-size: 20px;
         color: $black-alt;
 
         strong{
@@ -69,14 +72,16 @@
 
     &-data{
         grid-column-start: content;
+        grid-column-end: middle;
         grid-row-start: data;
+        width: 100%;
 
         li{
             display: inline-block;
             font-family: Oxygen-Regular;
-            font-size: 18px;
+            font-size: 16px;
             color: $black-alt;
-            margin: 10px 10px 10px 0px;
+            margin: 8px 10px 8px 0px;
 
             strong{
                 font-family: Oxygen-Bold;
@@ -87,23 +92,25 @@
 
     &-anthem{
         grid-column-start: content;
+        grid-column-end: column4;
         grid-row-start: anthem;
 
         &-title{
             font-family: Oxygen-Bold;
             color: $black-alt;
-            font-size: 20px;
+            font-size: 18px;
         }
     }
 
     &-discover{
         grid-column-start: content;
+        grid-column-end: column4;
         grid-row-start: discover;
 
         &-title{
             font-family: Oxygen-Bold;
             color: $black-alt;
-            font-size: 20px;
+            font-size: 18px;
         }
 
         &-element{
@@ -113,54 +120,150 @@
             background-image: url(../img/inde.png);
             background-size: cover;
             background-position: center;
-            padding: 10px;
+            padding: 8px;
 
-            &-title{
-                font-family: Oxygen-Bold;
-                color: $white-alt;
-                font-size: 30px;
-            }
-
-            &-links{
+            &-content{
                 width: 100%;
-                height: 60px;
+                height: 100%;
                 display: flex;
                 justify-content: flex-end;
-                align-items: flex-end;
+
+                &-title{
+                    font-family: Oxygen-Bold;
+                    color: $white-alt;
+                    font-size: 24px;
+                    margin-right: auto;
+                }
+
 
                 &-discover{
+                    align-self: flex-end;
                     margin: 0px 10px;
-                    width: 160px;
-                    height: 40px;
+                    width: 50px;
+                    height: 35px;
                     background: $white;
                     border-radius: 30px;
                     color: $black-alt;
                     cursor: pointer;
                     text-transform: uppercase;
                     font-family: Oxygen-Bold;
-                    font-size: 14px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
+                    font-size: 12px;
+                    position: relative;
+                    transition: 0.2s all ease-out 0.2s;
+
+                    span:first-child{
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        font-size: 20px;
+                        color: $title-color;
+                        transition: 0.2s all ease-out 0.2s;
+                    }
+
+                    span:nth-of-type(2){
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        opacity: 0;
+                        transition: 0.2s opacity ease-out, 0.2s transform ease-out 0.2s;
+                    }
+
+                    &:hover{
+                        width: 120px;
+                        transition: 0.3s all ease-out;
+                        span:first-child{
+                            transition: 0.2s all ease-out;
+                            left: 20px;
+                        }
+                        span:nth-of-type(2){
+                            opacity: 1;
+                            transform: translate(-30%,-50%);
+                            transition: 0.2s opacity ease-out 0.2s;
+                        }
+                    }
 
                 }
 
                 &-streetview{
+                    align-self: flex-end;
+                    justify-self: flex-end;
                     margin: 0px 10px;
-                    width: 160px;
-                    height: 40px;
+                    width: 120px;
+                    height: 35px;
                     background: $title-color;
                     border-radius: 30px;
                     color: $white-alt;
                     cursor: pointer;
                     text-transform: uppercase;
                     font-family: Oxygen-Bold;
-                    font-size: 14px;
+                    font-size: 12px;
                     display: flex;
                     align-items: center;
                     justify-content: center;
                     
                 }
+            }
+        }
+    }
+
+    @media screen and (max-width:968px){
+        grid-template-columns: [column1] 80px [content] auto [column4] 80px;
+        background-image: none;
+    }
+
+    @media screen and (max-width:680px){
+        height: 100%;
+        width: 100%;
+        grid-template-columns: [column1] 20px [content] 320px [column4] 20px;
+        grid-template-rows: [rowstart] 10px [title] 50px [space] 10px [continent] 30px [capital] 30px [data] 100px [anthem] 75px [discover] auto [rowend] 10px;
+
+        &-title{
+            font-size: 40px;
+        }
+
+        &-backtomap{
+            font-size: 12px;
+        }
+
+        &-continent{
+            font-size: 16px;
+        }
+
+        &-capital{
+            font-size: 16px;
+        }
+
+        &-data{
+            grid-column-end: column4;
+            li{
+                font-size: 12px;
+                width: 100%;
+                margin: 4px 10px 4px 0;
+            }
+        }
+
+        &-anthem{
+            &-title{
+                font-size: 14px;
+            }
+        }
+
+        &-discover{
+            &-title{
+                font-size: 14px;
+            }
+            &-element{
+                width: 100%;
+                height: 90px;
+
+                &-content{
+                    &-title{
+                        font-size: 20px;
+                    }
+                }
+
             }
         }
     }
