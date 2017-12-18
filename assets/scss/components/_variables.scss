@@ -1,9 +1,28 @@
 $main-color: #efefef;
 $second-color: #ff2171;
+$white: #ffffff;
+$white-alt: #fefefe;
+$black-alt: #1C1C1C;
+
+$title-color: #FF3B1B;
 
 @font-face {
-  font-family: 'PlayfairDisplay';
+  font-family: 'Oxygen-Regular';
   font-weight: 400;
 
-  src: url(../fonts/PlayfairDisplay-Regular.ttf);
+  src: url(../fonts/Oxygen-Regular.ttf);
+}
+
+@font-face {
+  font-family: 'Oxygen-Light';
+  font-weight: 300;
+
+  src: url(../fonts/Oxygen-Light.ttf);
+}
+
+@font-face {
+  font-family: 'Oxygen-Bold';
+  font-weight: 700;
+
+  src: url(../fonts/Oxygen-Bold.ttf);
 }

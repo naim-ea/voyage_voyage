@@ -1,0 +1,137 @@
+.single-place{
+
+    width: 100vw;
+    height: 100vh;
+    background: $white-alt;
+    display: grid;
+    grid-template-columns: [column1] 80px [content] 550px [middle] auto [column4] 80px;
+    grid-template-rows: [rowstart] 50px [title] 50px [space] 50px [description] 100px [space] auto [translation] 320px [footer] 70px [rowend] 50px;
+    background-image: url(../img/inde.png);
+    background-position: 580px 50%;
+    background-repeat: no-repeat;
+    background-size: 1200px auto;
+
+    &-title{
+        grid-column-start: content;
+        grid-row-start: title;
+        font-family: Oxygen-Bold;
+        color: $title-color;
+        text-transform: uppercase;
+        font-size: 50px;
+    }
+
+    &-backtocountry{
+        grid-column-start: content;
+        grid-column-end: column4;
+        grid-row-start: title;
+        justify-self: flex-end;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding-right: 30px;
+        width: 140px;
+        height: 40px;
+        border-radius: 20px;
+        font-family: Oxygen-Bold;
+        color: $black-alt;
+        font-size: 14px;
+        text-transform: uppercase;
+        -webkit-box-shadow: 0px 3px 7px 0px rgba(0,0,0,0.25);
+        -moz-box-shadow: 0px 3px 7px 0px rgba(0,0,0,0.25);
+        box-shadow: 0px 3px 7px 0px rgba(0,0,0,0.25);
+        cursor: pointer;
+    }
+
+    &-description{
+        grid-column-start: content;
+        grid-row-start: description;
+        font-family: Oxygen-Regular;
+        color: $black-alt;
+        font-size: 14px;
+        line-height: 17px;
+    }
+
+    &-translation{
+        grid-column-start: content;
+        grid-row-start: translation;
+
+        &-title{
+            font-family: Oxygen-Bold;
+            color: $black-alt;
+            font-size: 20px;
+        }
+
+        &-cta{
+            margin: 15px 0px 20px;
+            font-family: Oxygen-Bold;
+            color: $black-alt;
+            font-size: 16px;
+        }
+
+        &-element{
+
+            li{
+                font-family: Oxygen-Regular;
+                color: $black-alt;
+                font-size: 14px;
+                display: inline-block;
+                width: 130px;
+                margin-top: 30px;
+
+                &.other-language{
+                    font-family: Oxygen-Bold;
+                    color: $title-color;
+                    font-size: 16px;
+                    cursor: pointer;
+                }
+            }
+            
+        }
+    }
+
+    &-footer{
+        grid-column-start: content;
+        grid-column-end: column4;
+        grid-row-start: footer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        &-backtomap{
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 30px;
+            width: 140px;
+            height: 40px;
+            border-radius: 20px;
+            font-family: Oxygen-Bold;
+            color: $black-alt;
+            font-size: 14px;
+            text-transform: uppercase;
+            -webkit-box-shadow: 0px 3px 7px 0px rgba(0,0,0,0.25);
+            -moz-box-shadow: 0px 3px 7px 0px rgba(0,0,0,0.25);
+            box-shadow: 0px 3px 7px 0px rgba(0,0,0,0.25);
+            cursor: pointer;
+        }
+
+        &-streetview{
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 15px;
+            width: 148px;
+            height: 70px;
+            border-radius: 68px;
+            font-family: Oxygen-Bold;
+            color: $white-alt;
+            font-size: 14px;
+            text-transform: uppercase;
+            -webkit-box-shadow: 0px 2px 7px 0px rgba(0,0,0,0.25);
+            -moz-box-shadow: 0px 2px 7px 0px rgba(0,0,0,0.25);
+            box-shadow: 0px 2px 7px 0px rgba(0,0,0,0.25);
+            background: $title-color;
+            cursor: pointer;
+        }
+    }
+}

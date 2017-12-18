@@ -1,17 +1,15 @@
 @import 'components/_reset.scss';
 @import 'components/_variables.scss';
 
+@import 'pages/_single-place.scss';
+
+@import 'partials/_sidebar.scss';
+@import 'partials/_map.scss';
+
 
 body {
   background-color: $main-color;
   color: black;
-  font-family: PlayfairDisplay;
+  font-family: Oxygen-Regular;
   font-size: 16px;
-}
-
-h1 {
-  padding: 20px;
-  color: $second-color;
-  font-size: 24px;
-  font-weight: 800;
 }
