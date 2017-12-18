@@ -5,11 +5,11 @@
     background: $white-alt;
     display: grid;
     grid-template-columns: [column1] 80px [content] 550px [middle] auto [column4] 80px;
-    grid-template-rows: [rowstart] 50px [title] 50px [space] 50px [description] 100px [space] auto [translation] 320px [footer] 70px [rowend] 50px;
+    grid-template-rows: [rowstart] 30px [title] 50px [space] 20px [description] 100px [space] 40px [typical] 10px [space] 40px [fact] 125px [translation] auto [footer] 70px [rowend] 30px;
     background-image: url(../img/inde.png);
-    background-position: 580px 50%;
+    background-position: 100% 50%;
     background-repeat: no-repeat;
-    background-size: 1200px auto;
+    background-size: auto 100%;
 
     &-title{
         grid-column-start: content;
@@ -40,6 +40,7 @@
         -moz-box-shadow: 0px 3px 7px 0px rgba(0,0,0,0.25);
         box-shadow: 0px 3px 7px 0px rgba(0,0,0,0.25);
         cursor: pointer;
+        background: $white-alt;
     }
 
     &-description{
@@ -49,6 +50,38 @@
         color: $black-alt;
         font-size: 14px;
         line-height: 17px;
+    }
+
+    &-typical{
+        grid-column-start: content;
+        grid-row-start: typical;
+        font-family: Oxygen-Regular;
+        color: $black-alt;
+        font-size: 14px;
+
+        strong{
+            font-family: Oxygen-Bold;
+            color: $title-color;
+        }
+    }
+
+    &-fact{
+        grid-column-start: content;
+        grid-row-start: fact;
+
+        &-title{
+            font-family: Oxygen-Bold;
+            color: $black-alt;
+            font-size: 20px;
+        }
+
+        &-text{
+            font-family: Oxygen-Regular;
+            color: $black-alt;
+            font-size: 14px;
+            line-height: 17px;
+            margin-top: 20px;
+        }
     }
 
     &-translation{
@@ -62,7 +95,7 @@
         }
 
         &-cta{
-            margin: 15px 0px 20px;
+            margin: 15px 0px 0px 0px;
             font-family: Oxygen-Bold;
             color: $black-alt;
             font-size: 16px;
@@ -113,6 +146,7 @@
             -moz-box-shadow: 0px 3px 7px 0px rgba(0,0,0,0.25);
             box-shadow: 0px 3px 7px 0px rgba(0,0,0,0.25);
             cursor: pointer;
+            background: $white-alt;
         }
 
         &-streetview{
