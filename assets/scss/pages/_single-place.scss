@@ -245,12 +245,12 @@
 
     background: $white-alt;
     display: grid;
-    grid-template-columns: [container1] 20px [left] 40% [right] auto [container2] 20px;
-    grid-template-rows: [start] 100% [space] 100px [part2] 50vh [video] 100vh  [space] 100px [fact];
+    grid-template-columns: [container1] 20px [left] 40% [left2] 10% [right] auto [container2] 20px;
+    grid-template-rows: [start] 100% [space] 100px [part2] 50vh [video] 100vh  [space] 50px [fact] 100vh [space] 50px [cooking] 100vh [space] 50px [clothes] 100vh [space] 50px [climate] 100vh;
 
     &-title{
         grid-column-start: left;
-        grid-column-end: right;
+        grid-column-end: left2;
         display: flex;
         flex-direction: column;
         align-items: flex-end;
@@ -311,6 +311,7 @@
 
     &-img{
         grid-column-start: right;
+        grid-column-end: left2;
         transform: translateY(50px);
         opacity: 0;
         animation: enter-anim 0.6s ease-out;
@@ -357,15 +358,17 @@
         &-text{
             width: 70%;
             font-size: 18px;
-            line-height: 24px;
+            line-height: 32px;
             font-family: "Oxygen-Regular";
         }
     }
 
     &-video{
         text-align: center;
-        width: 100vw;
+        width: 100%;
         height: 100vh;
+        grid-column-start: container1;
+        grid-column-end : container2;
         grid-row-start: video;
         video{
             width: auto;
@@ -377,28 +380,210 @@
 
     &-fact{
         grid-row-start: fact;
-        grid-column-start: left;
-        text-align: center;
-        font-weight: bold;
-        font-size: 40px;
-        color: $title-color;
-        text-transform: uppercase;
-        font-family: "Signika";
+        grid-column-start: right;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
 
-        img{
-            width: 100%;
-            height: auto;
-            margin-top: 200px;
+        &-title{
+            margin-left: 50px;
+            text-align: left;
+            font-weight: bold;
+            font-size: 80px;
+            color: $black-alt;
+            text-transform: uppercase;
+            font-family: "Signika";
+        }
+
+        &-text{
+            margin-left: 50px;
+            margin-top: 50px;
+            width: 70%;
+            font-size: 18px;
+            line-height: 32px;
+            font-family: "Oxygen-Regular";
         }
     }
 
-    &-fact-text{
-        grid-column-start: right;
+    &-fact-img{
+        display: flex;
+        align-items: flex-end;
         grid-row-start: fact;
-        width: 70%;
-        font-size: 18px;
-        line-height: 24px;
-        font-family: "Oxygen-Regular";
+        grid-column-start: container1;
+        grid-column-end: right;
+
+        img{
+            width: 150%;
+            height:auto;
+        }
+
+    }
+
+    &-cooking-img{
+        text-align: right;
+        grid-row-start: cooking;
+        grid-column-start: container1;
+        grid-column-end: left2;
+    }
+
+    &-cooking-text{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        grid-row-start: cooking;
+        grid-column-start: left2;
+        grid-column-end: container2;
+
+        h2{
+            margin-left: 50px;
+            text-align: left;
+            font-weight: bold;
+            font-size: 80px;
+            color: $black-alt;
+            text-transform: uppercase;
+            font-family: "Signika";
+        }
+
+        &-subtitle{
+            margin-top: 50px;
+            margin-left: 50px;
+            text-align: left;
+            font-weight: bold;
+            font-size: 60px;
+            color: $title-color;
+            font-family: "Signika";
+        }
+        
+        &-text{
+            margin-left: 50px;
+            margin-top: 50px;
+            width: 70%;
+            font-size: 18px;
+            line-height: 32px;
+            font-family: "Oxygen-Regular";
+        }
+    }
+
+    &-clothes-title{
+        grid-row-start: clothes;
+        grid-column-start: left;
+        grid-column-end: container2;
+        margin-left: 50px;
+        margin-top: 50px;
+        text-align: left;
+        font-weight: bold;
+        font-size: 80px;
+        color: $black-alt;
+        text-transform: uppercase;
+        font-family: "Signika";
+    }
+
+    &-clothes-content{
+        grid-row-start: clothes;
+        grid-column-start: left;
+        grid-column-end: left2;
+        margin-left: 50px;
+        margin-top: 150px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img{
+            width: 70%;
+            height: auto;
+        }
+    }
+
+    &-clothes-text{
+        grid-row-start: clothes;
+        grid-column-start: left2;
+        grid-column-end: container2;
+        margin-left: 50px;
+        margin-top: 150px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+
+        &-title{
+            font-size: 28px;
+            font-family: "Signika";
+            font-weight: bold;
+
+            strong{
+                margin-left: 20px;
+                color: $title-color;
+            }
+        }
+
+        &-text{
+            margin-top: 50px;
+            width: 70%;
+            font-size: 18px;
+            line-height: 32px;
+            font-family: "Oxygen-Regular";
+        }
+    }
+
+    &-climate-title{
+        grid-row-start: climate;
+        grid-column-start: left;
+        grid-column-end: container2;
+        margin-left: 50px;
+        margin-top: 50px;
+        text-align: left;
+        font-weight: bold;
+        font-size: 80px;
+        color: $black-alt;
+        text-transform: uppercase;
+        font-family: "Signika";
+    }
+
+    &-climate-first-content{
+        grid-row-start: climate;
+        grid-column-start: left;
+        grid-column-end: right;
+        text-align: center;
+        margin-top: 200px;
+
+        &-seasons{
+            font-family: "Signika";
+            font-size: 40px;
+            font-weight: bold;
+            color: $black-alt;
+        }
+
+        &-weather{
+            font-family: "Signika";
+            font-size: 30px;
+            font-weight: bold;
+            color: $title-color;
+            margin-top: 20px;
+        }
+
+    }
+
+    &-climate-second-content{
+        grid-row-start: climate;
+        grid-column-start: right;
+        grid-column-end: container2;
+        text-align: center;
+        margin-top: 200px;
+
+        &-seasons{
+            font-family: "Signika";
+            font-size: 40px;
+            font-weight: bold;
+            color: $black-alt;
+        }
+
+        &-weather{
+            font-family: "Signika";
+            font-size: 30px;
+            font-weight: bold;
+            color: $title-color;
+            margin-top: 20px;
+        }
 
     }
 }
