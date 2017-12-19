@@ -10,6 +10,11 @@
     background-position: bottom right;
     background-repeat: no-repeat;
     background-size: 600px auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateY(100vh);
+    transition: 0.3s transform ease-out;
 
     &-title{
         grid-column-start: content;
@@ -206,6 +211,11 @@
                 }
             }
         }
+    }
+
+    &.active{
+        transform: translateY(0);
+        transition: 0.3s transform ease-out;
     }
 
     @media screen and (max-width:968px){
