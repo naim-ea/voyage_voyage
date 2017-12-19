@@ -10,4 +10,5 @@ a[href^="https://maps.google.com/maps"]{display:none !important}
 
 #map{
     cursor: pointer;
+    overflow: hidden;
 }
