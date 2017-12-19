@@ -1,47 +1,108 @@
-// const DOM = {};
+// const DOM = {}
 
-// DOM.country_backtomap     = document.querySelector('.single-country-backtomap');
-// DOM.place_backtomap       = document.querySelector('.single-place-footer-backtomap');
-// DOM.place_backtocountry   = document.querySelector('.single-place-backtocountry');
-// DOM.country_place_choice  = document.querySelectorAll('.single-country-discover-element-content-discover');
+// DOM.country_backtomap     = document.querySelector('.single-country-backtomap')
+// DOM.place_backtomap       = document.querySelector('.single-place-footer-backtomap')
+// DOM.place_backtocountry   = document.querySelector('.single-place-backtocountry')
+// DOM.country_place_choice  = document.querySelectorAll('.single-country-discover-element-content-discover')
 
-// DOM.country               = document.querySelector('.single-country');
-// DOM.place                 = document.querySelector('.single-place');
+// DOM.country               = document.querySelector('.single-country')
+// DOM.place                 = document.querySelector('.single-place')
 
 
 // DOM.country_backtomap.addEventListener('click', () => {
-//     DOM.country.classList.remove('active');
-// });
+//     DOM.country.classList.remove('active')
+// })
 
 // DOM.place_backtomap.addEventListener('click', () => {
-//     DOM.country.classList.remove('active');
-//     DOM.place.classList.remove('active');
-// });
+//     DOM.country.classList.remove('active')
+//     DOM.place.classList.remove('active')
+// })
 
 // DOM.place_backtocountry.addEventListener('click', () => {
-//     DOM.place.classList.remove('active');
-// });
+//     DOM.place.classList.remove('active')
+// })
 
 // DOM.country_place_choice.forEach(element => {
 //     element.addEventListener('click', () => {
-//         DOM.place.classList.add('active');
+//         DOM.place.classList.add('active')
 //     })
-// });
+// })
 
 /********
  * MENU
  * 
  */
 
- let menu = document.querySelector('.menu-hamburger');
- let menu_content = document.querySelector('.menu-bg');
- menu.addEventListener('click', () => {
-    if(menu.classList.contains('active')){
-        menu.classList.remove('active');
-        menu_content.classList.remove('active');
+const DOM = {}
+
+DOM.singlePlaceVideo = document.querySelector('.single-place-video video')
+
+window.onbeforeunload = () => { // Scroll to top when reload
+  window.scrollTo(0, 0)
+}
+
+function isElementInViewport(el) { // Check if element is in viewport
+
+  const rect = el.getBoundingClientRect()
+
+  return rect.bottom > 0 &&
+    rect.right > 0 &&
+    rect.left < (window.innerWidth || document.documentElement.clientWidth) &&
+    rect.top < (window.innerHeight || document.documentElement.clientHeight)
+}
+
+function onVisibilityChange(el, callback) { // Check if visibility in viewport has change
+  let oldVisible
+  return function() {
+    let visible = isElementInViewport(el)
+    if (visible != oldVisible) {
+      oldVisible = visible
+      if (typeof callback == 'function') {
+        callback()
+      }
+      return visible
     }
-    else{
-        menu.classList.add('active');
-        menu_content.classList.add('active');
-    }
- });
+  }
+}
+
+const handler = onVisibilityChange(DOM.singlePlaceVideo, () => { // Handle the video
+  if (isElementInViewport(DOM.singlePlaceVideo) == true) {
+    DOM.singlePlaceVideo.play()
+    DOM.singlePlaceVideo.volume = 0.5
+  } else {
+    DOM.singlePlaceVideo.pause()
+  }
+
+})
+
+if (window.addEventListener) { // Event listener when viewport changing
+  addEventListener('DOMContentLoaded', handler, false)
+  addEventListener('load', handler, false)
+  addEventListener('scroll', handler, false)
+  addEventListener('resize', handler, false)
+} else if (window.attachEvent) {
+  attachEvent('onDOMContentLoaded', handler) // IE9+ :(
+  attachEvent('onload', handler)
+  attachEvent('onscroll', handler)
+  attachEvent('onresize', handler)
+}
+
+
+let menu = document.querySelector('.menu-hamburger')
+let menu_content = document.querySelector('.menu-bg')
+menu.addEventListener('click', () => {
+  if (menu.classList.contains('active')) {
+    menu.classList.remove('active')
+    menu_content.classList.remove('active')
+  } else {
+    menu.classList.add('active')
+    menu_content.classList.add('active')
+  }
+})
+
+window.sr = ScrollReveal()
+sr.reveal('.single-place-description-title', { duration: 1000, origin: 'right' })
+sr.reveal('.single-place-description-text', { duration: 1000, origin: 'right' })
+sr.reveal('.single-place-video', { duration: 1000, viewFactor: 0.1 })
+sr.reveal('.single-place-fact', { duration: 1000 })
+sr.reveal('.single-place-fact-text', { duration: 1000 })
