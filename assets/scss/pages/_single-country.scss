@@ -410,6 +410,13 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+            align-items: center;
+
+            img{
+                height: auto;
+                width: 400px;
+                display: block;
+            }
         }
     }
 
@@ -417,8 +424,6 @@
         grid-row-start: history;
         grid-column-start: column1;
         grid-column-end: end;
-        background-image: url('../img/inde_history.png');
-        background-size: cover;
         display: flex;
         flex-direction: row;
         justify-content: center;
@@ -455,6 +460,13 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+            align-items: center;
+
+            img{
+                height: auto;
+                width: 500px;
+                display: block;
+            }
         }
     }
 
@@ -464,6 +476,7 @@
         grid-column-end: end;
         background-image: url('../img/inde_famous.png');
         background-size: cover;
+        position: relative;
 
         &-content{
             margin-left: 100px;
@@ -471,6 +484,7 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+            z-index: 0;
 
             &-title{
                 font-size: 40px;
@@ -496,11 +510,14 @@
         }
 
         &-img{
-            width: 50%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+
+            img{
+                width: 700px;
+                height: auto;
+            }
         }
     }
 
