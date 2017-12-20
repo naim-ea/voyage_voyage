@@ -43,12 +43,14 @@ window.onbeforeunload = () => { // Scroll to top when reload
 
 function isElementInViewport(el) { // Check if element is in viewport
 
-  const rect = el.getBoundingClientRect()
+  if (el != null) {
+    const rect = el.getBoundingClientRect()
 
-  return rect.bottom > 0 &&
-    rect.right > 0 &&
-    rect.left < (window.innerWidth || document.documentElement.clientWidth) &&
-    rect.top < (window.innerHeight || document.documentElement.clientHeight)
+    return rect.bottom > 0 &&
+      rect.right > 0 &&
+      rect.left < (window.innerWidth || document.documentElement.clientWidth) &&
+      rect.top < (window.innerHeight || document.documentElement.clientHeight)
+  }
 }
 
 function onVisibilityChange(el, callback) { // Check if visibility in viewport has change
@@ -81,7 +83,7 @@ if (window.addEventListener) { // Event listener when viewport changing
   addEventListener('scroll', handler, false)
   addEventListener('resize', handler, false)
 } else if (window.attachEvent) {
-  attachEvent('onDOMContentLoaded', handler) // IE9+ :(
+  attachEvent('onDOMContentLoaded', handler) // IE9+
   attachEvent('onload', handler)
   attachEvent('onscroll', handler)
   attachEvent('onresize', handler)
@@ -106,3 +108,46 @@ sr.reveal('.single-place-description-text', { duration: 1000, origin: 'right' })
 sr.reveal('.single-place-video', { duration: 1000, viewFactor: 0.1 })
 sr.reveal('.single-place-fact', { duration: 1000 })
 sr.reveal('.single-place-fact-text', { duration: 1000 })
+
+DOM.body = document.querySelector('body')
+DOM.singleCountry = document.querySelector('.single-country')
+DOM.singleCountryLifeButton = document.querySelector('.single-country-society-content-links-life')
+DOM.singleCountryLifeButtonExit = document.querySelector('.single-country-life-backtocountry')
+DOM.singleCountryLife = document.querySelector('.single-country-life')
+DOM.singleCountryTransportsButton = document.querySelector('.single-country-society-content-links-transports')
+DOM.singleCountryTransportsButtonExit = document.querySelector('.single-country-transports-backtocountry')
+DOM.singleCountryTransports = document.querySelector('.single-country-transports')
+
+DOM.singleCountryLifeButton.addEventListener('click', () => {
+  countrySuppInfoActive(DOM.singleCountryLife, DOM.singleCountry, DOM.body)
+})
+
+DOM.singleCountryLifeButtonExit.addEventListener('click', () => {
+  countrySuppInfoExit(DOM.singleCountryLife, DOM.singleCountry, DOM.body)
+})
+
+DOM.singleCountryTransportsButton.addEventListener('click', () => {
+  countrySuppInfoActive(DOM.singleCountryTransports, DOM.singleCountry, DOM.body)
+})
+
+DOM.singleCountryTransportsButtonExit.addEventListener('click', () => {
+  countrySuppInfoExit(DOM.singleCountryTransports, DOM.singleCountry, DOM.body)
+})
+
+function countrySuppInfoActive(containerElem, container, body) {
+  if (containerElem.classList.contains('active')) {
+    containerElem.classList.remove('active')
+    container.classList.remove('active')
+    body.classList.remove('active')
+  } else {
+    containerElem.classList.add('active')
+    container.classList.add('active')
+    body.classList.add('active')
+  }
+}
+
+function countrySuppInfoExit(containerElem, container, body) {
+  containerElem.classList.remove('active')
+  container.classList.remove('active')
+  body.classList.remove('active')
+}
