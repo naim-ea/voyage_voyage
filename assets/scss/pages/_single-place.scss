@@ -2,7 +2,7 @@
     background: $white-alt;
     display: grid;
     grid-template-columns: [container1] 50px [left] 40% [left2] 10% [right] auto [container2] 50px;
-    grid-template-rows: [start] 100% [space] 100px [part2] 50vh [video] 100vh  [space] 50px [fact] 100vh [space] 50px [cooking] 100vh [space] 50px [clothes] 100vh [space] 50px [climate] 100vh;
+    grid-template-rows: [start] 100% [space] 100px [part2] 50vh [video] 100vh  [space] 50px [fact] 100vh [space] 50px [cooking] 100vh [space] 50px [clothes] 100vh [space] 50px [climate] 100vh [space] 50px [wildlife] 100vh;
 
     &-title{
         grid-column-start: left;
@@ -320,6 +320,7 @@
         }
 
     }
+
     &-climate-img{
         grid-row-start: climate;
         grid-column-start: right;
@@ -333,6 +334,52 @@
         img{
             height: 100%;
             width: auto;
+        }
+    }
+
+    &-wildlife{
+        grid-row-start: wildlife;
+        grid-column-start: left;
+        grid-column-end: right;
+        margin-left: 50px;
+        margin-top: 50px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        &-title{
+            
+            text-align: left;
+            font-weight: bold;
+            font-size: 80px;
+            color: $black-alt;
+            text-transform: uppercase;
+            font-family: "Signika";
+        }
+
+        &-description{
+            font-family: "Oxygen-Regular";
+            font-size: 18px;
+            color: $black-alt;
+            margin-top: 15px;
+            line-height: 24px;
+        }
+    }
+
+    &-wildlife-img{
+        grid-row-start: wildlife;
+        grid-column-start: right;
+        grid-column-end: container2;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        img{
+            height: auto;
+            width: 100%;
         }
     }
 }
@@ -363,4 +410,13 @@
         top: 18px;
         left: 80px;
     }
+}
+
+.single-place-speaker{
+    width: 35px;
+    height: auto;
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    cursor: pointer;
 }

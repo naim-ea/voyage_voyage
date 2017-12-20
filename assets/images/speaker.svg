@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="541.931 265 50.069 50.069">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #ff3b1b;
+      }
+
+      .cls-2 {
+        fill: none;
+      }
+    </style>
+  </defs>
+  <g id="ic_volume_up_black_24px" transform="translate(541.931 265)">
+    <path id="Tracé_3" data-name="Tracé 3" class="cls-1" d="M3,15.267V27.785h8.345L21.776,38.216V4.836L11.345,15.267Zm28.164,6.259a9.389,9.389,0,0,0-5.216-8.407V29.913A9.334,9.334,0,0,0,31.164,21.526ZM25.948,3.23v4.3a14.608,14.608,0,0,1,0,28v4.3a18.763,18.763,0,0,0,0-36.592Z" transform="translate(3.259 3.508)"/>
+    <path id="Tracé_4" data-name="Tracé 4" class="cls-2" d="M0,0H50.069V50.069H0Z"/>
+  </g>
+</svg>
