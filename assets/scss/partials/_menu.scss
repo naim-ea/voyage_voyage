@@ -7,6 +7,7 @@
     position: fixed;
     top: 0;
     left: 0;
+    z-index: 2;
 
     &-content{
         width: 350px;
@@ -33,6 +34,7 @@
         transform: translateX(0);
         transition: transform 0.4s ease-out;
     }
+
 }
 
 .menu-hamburger{
@@ -46,6 +48,7 @@
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
+    z-index: 2;
 
     &-bar{
         width: 25px;
@@ -84,6 +87,7 @@
 }
 
 .menu-backto{
+    z-index: 2;
     grid-column-start: content;
     grid-column-end: column4;
     grid-row-start: title;
