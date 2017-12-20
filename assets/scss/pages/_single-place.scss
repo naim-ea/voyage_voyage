@@ -31,6 +31,7 @@
         }
 
         &-text{
+            text-align: right;
             h1{
                 font-size: 90px;
                 font-family: 'Signika', sans-serif;
@@ -68,7 +69,7 @@
 
     &-img{
         grid-column-start: right;
-        grid-column-end: left2;
+        grid-column-end: end;
         transform: translateY(50px);
         opacity: 0;
         animation: enter-anim 0.6s ease-out;
@@ -400,35 +401,275 @@
                 height: 100%;
             }
         }
-    }
-}
 
-.street-view{
-    .menu-backto{
-        grid-column-start: content;
-        grid-column-end: column4;
-        grid-row-start: title;
-        justify-self: flex-end;
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        padding-right: 30px;
-        width: 140px;
-        height: 40px;
-        border-radius: 20px;
-        font-family: Oxygen-Bold;
-        color: $black-alt;
-        font-size: 14px;
-        text-transform: uppercase;
-        -webkit-box-shadow: 0px 3px 7px 0px rgba(0,0,0,0.25);
-        -moz-box-shadow: 0px 3px 7px 0px rgba(0,0,0,0.25);
-        box-shadow: 0px 3px 7px 0px rgba(0,0,0,0.25);
-        cursor: pointer;
-        background: $white-alt;
-        position: fixed;
-        top: 18px;
-        left: 80px;
+        @media screen and (max-width:1024px){
+            grid-template-rows: [start] 1100px [part2] 500px [video] 500px [fact] 1200px  [cooking] 900px [space] 50px [clothes] 950px [space] 100px [climate] 1400px [wildlife] 1800px;
+            .single-place-fact{
+                margin-top: 800px;
+            }
+            .single-place-cooking-text{
+                margin-left: 0px;
+            }
+            .single-place-wildlife{
+                margin-top: 1050px;
+            }
+        }
+
+        @media screen and (max-width:768px){
+            grid-template-rows: [start] 1000px [part2] 500px [video] 580px [fact] 1100px [space] 50px  [cooking] 1100px [space] 200px [clothes] 800px [space] 100px [climate] 1200px [space] 50px [wildlife] 1600px;
+            .single-place-fact{
+                margin-top: 800px;
+            }
+            .single-place-wildlife{
+                margin-top: 800px;
+            }
+    
+        }
     }
+
+    &.bangalore{
+        @media screen and (max-width:1024px){
+            grid-template-rows: [start] 1100px [part2] 500px [video] 500px [space] 150px [fact] 1200px  [cooking] 900px [space] 50px [clothes] 950px [space] 100px [climate] 1400px [wildlife] 1600px;
+            .single-place-title{
+                grid-column-end: right;
+                padding: 0;
+            }
+
+            .single-place-fact{
+                margin-top: 800px;
+            }
+
+            .single-place-clothes-content{
+                margin-top: 50px;
+            }
+
+            .single-place-clothes-text{
+                margin-top: 50px;
+            }
+
+            .single-place-wildlife{
+                margin-top: 800px;
+            }
+        }
+
+        @media screen and (max-width:768px){
+            grid-template-rows: [start] 1000px [part2] 500px [video] 580px [fact] 1000px [space] 50px  [cooking] 900px [space] 200px [clothes] 800px [space] 100px [climate] 1200px [space] 50px [wildlife] 1400px;
+
+            .single-place-fact{
+                margin-top: 700px;
+            }
+            .single-place-wildlife{
+                margin-top: 600px;
+            }
+    
+        }
+    }
+
+    @media screen and (max-width:1024px){
+        grid-template-columns: [container1] 50px [left] 40% [left2] 10% [right] auto [container2] 50px;
+        grid-template-rows: [start] 1000px [part2] 500px [video] 680px [fact] 900px  [cooking] 900px [space] 50px [clothes] 950px [space] 100px [climate] 100vh [space] 100px [wildlife] 100vh;
+    
+        &-description{
+            grid-column-start: left2;
+            grid-column-end: end;
+            justify-content: center;
+            width: 600px;
+
+            &-text{
+                margin-top: 40px;
+                font-size: 17pt;
+                line-height: 32px;
+            }
+        }
+
+        &-video{
+            height: auto;
+            width: 924px;
+
+            video{
+                width: 100%;
+            }
+        }
+
+        &-fact-img{
+            display: block;
+            grid-column-start: inherit;
+            grid-column-end: inherit;
+            width: 100vw;
+            text-align: center;
+        }
+
+        &-fact{
+            display: block;
+            margin-top: 640px;
+            grid-column-start: inherit;
+            grid-column-end: inherit;
+            width: 924px;
+
+            &-title{
+                text-align: center;
+            }
+
+            &-text{
+                width: 800px;
+                font-size: 17pt; 
+                line-height: 32px;
+                margin: 40px auto;
+            }
+        }
+
+        &-cooking-img{
+            margin-left: -70px;
+        }
+
+        &-cooking-text{
+            margin-left: -30px;
+            h2{
+                margin-left: 0;
+            }
+            &-subtitle{
+                margin-left: 0;
+            }
+            &-text{
+                margin-left: 0;
+                font-size: 17pt;
+                line-height: 32px;
+                width: 500px;
+            }
+        }
+
+        &-clothes-title{
+            grid-column-start: inherit;
+            grid-column-end: inherit;
+            margin: 0;
+            text-align: center;
+            width: 100vw;
+        }
+
+        &-clothes-content{
+            img{
+                height: 100%;
+                width: auto;
+            }
+        }
+
+        &-clothes-text{
+            margin-left: 0px;
+
+            &-text{
+                width: 500px;
+                font-size: 17pt;
+                line-height: 32px;
+            }
+        }
+
+        &-climate-title{
+            margin-top: 250px;
+        }
+
+        &-climate-content{
+            margin-top: 350px;
+
+            &-weather{
+                font-size: 17pt;
+                line-height: 32px;
+            }
+        }
+
+        &-wildlife-img{
+            display: block;
+            grid-column-start: inherit;
+            grid-column-end: inherit;
+            width: 100vw;
+            text-align: center;
+        }
+
+        &-wildlife{
+            display: block;
+            margin-top: 640px;
+            grid-column-start: inherit;
+            grid-column-end: inherit;
+            width: 924px;
+
+            &-title{
+                text-align: center;
+            }
+
+            &-description{
+                width: 800px;
+                font-size: 17pt; 
+                line-height: 32px;
+                margin: 40px auto;
+            }
+        }
+    }
+
+    @media screen and (max-width:768px){
+        grid-template-columns: [container1] 20px [left] 40% [left2] 10% [right] auto [container2] 20px;
+        grid-template-rows: [start] 1000px [part2] 500px [video] 580px [fact] 900px [space] 50px  [cooking] 1100px [space] 200px [clothes] 800px [space] 100px [climate] 1200px [space] 200px [wildlife] 1300px;
+
+
+        &-title{
+            &-text{
+                h1{
+                    font-size: 60px;
+                }
+            }
+        }
+
+        &-description{
+            grid-column-start: left;
+            margin-left: 50px;
+        }
+
+        &-video{
+            width: 728px;
+        }
+
+        &-fact{
+            width: 728px;
+
+            &-text{
+                width: 688px;
+            }
+        }
+
+        &-cooking-img{
+            margin-top: 0px;
+        }
+
+        &-cooking-text{
+            margin-left: -80px;
+            justify-content: flex-end;
+        }
+
+        &-clothes-content{
+            margin-left: -50px;
+        }
+
+        &-clothes-text{
+            margin-left: -40px;
+
+            &-text{
+                width: 450px;
+            }
+        }
+
+        &-climate-content{
+            width: 120%;
+        }
+
+        &-wildlife{
+            margin-top: 500px;
+            margin-left: 0px;
+            width: 100vw;
+
+            &-description{
+                width: 688px;
+            }
+        }
+    }
+
 }
 
 .single-place-speaker{
