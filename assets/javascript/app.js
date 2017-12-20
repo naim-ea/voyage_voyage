@@ -102,14 +102,11 @@ menu.addEventListener('click', () => {
   }
 })
 
-window.sr = ScrollReveal()
-sr.reveal('.single-place-description-title', { duration: 1000, origin: 'right' })
-sr.reveal('.single-place-description-text', { duration: 1000, origin: 'right' })
-sr.reveal('.single-place-video', { duration: 1000, viewFactor: 0.1 })
-sr.reveal('.single-place-fact', { duration: 1000 })
-sr.reveal('.single-place-fact-text', { duration: 1000 })
+
 
 DOM.body = document.querySelector('body')
+
+// Country page selector
 DOM.singleCountry = document.querySelector('.single-country')
 DOM.singleCountryLifeButton = document.querySelector('.single-country-society-content-links-life')
 DOM.singleCountryLifeButtonExit = document.querySelector('.single-country-life-backtocountry')
@@ -117,37 +114,87 @@ DOM.singleCountryLife = document.querySelector('.single-country-life')
 DOM.singleCountryTransportsButton = document.querySelector('.single-country-society-content-links-transports')
 DOM.singleCountryTransportsButtonExit = document.querySelector('.single-country-transports-backtocountry')
 DOM.singleCountryTransports = document.querySelector('.single-country-transports')
+DOM.singleCountryTranslatePlayer = document.querySelector('.single-country-sounds-translations-player')
+DOM.singleCountryTranslateButton = document.querySelectorAll('.single-country-sounds-translations-element .other-language')
 
-DOM.singleCountryLifeButton.addEventListener('click', () => {
-  countrySuppInfoActive(DOM.singleCountryLife, DOM.singleCountry, DOM.body)
-})
+// Place page selector
+DOM.singlePlace = document.querySelector('.single-place')
 
-DOM.singleCountryLifeButtonExit.addEventListener('click', () => {
-  countrySuppInfoExit(DOM.singleCountryLife, DOM.singleCountry, DOM.body)
-})
+// Country page
+if (DOM.singleCountry != null) {
+  // Country other infos animations
+  DOM.singleCountryLifeButton.addEventListener('click', () => {
+    countrySuppInfoActive(DOM.singleCountryLife, DOM.singleCountry, DOM.body)
+  })
 
-DOM.singleCountryTransportsButton.addEventListener('click', () => {
-  countrySuppInfoActive(DOM.singleCountryTransports, DOM.singleCountry, DOM.body)
-})
+  DOM.singleCountryLifeButtonExit.addEventListener('click', () => {
+    countrySuppInfoExit(DOM.singleCountryLife, DOM.singleCountry, DOM.body)
+  })
 
-DOM.singleCountryTransportsButtonExit.addEventListener('click', () => {
-  countrySuppInfoExit(DOM.singleCountryTransports, DOM.singleCountry, DOM.body)
-})
+  DOM.singleCountryTransportsButton.addEventListener('click', () => {
+    countrySuppInfoActive(DOM.singleCountryTransports, DOM.singleCountry, DOM.body)
+  })
 
-function countrySuppInfoActive(containerElem, container, body) {
-  if (containerElem.classList.contains('active')) {
+  DOM.singleCountryTransportsButtonExit.addEventListener('click', () => {
+    countrySuppInfoExit(DOM.singleCountryTransports, DOM.singleCountry, DOM.body)
+  })
+
+  function countrySuppInfoActive(containerElem, container, body) {
+    if (containerElem.classList.contains('active')) {
+      containerElem.classList.remove('active')
+      container.classList.remove('active')
+      body.classList.remove('active')
+    } else {
+      containerElem.classList.add('active')
+      container.classList.add('active')
+      body.classList.add('active')
+    }
+  }
+
+  function countrySuppInfoExit(containerElem, container, body) {
     containerElem.classList.remove('active')
     container.classList.remove('active')
     body.classList.remove('active')
-  } else {
-    containerElem.classList.add('active')
-    container.classList.add('active')
-    body.classList.add('active')
   }
+
+  // Traduction button
+  DOM.singleCountryTranslateButton.forEach((elTranslateButton, indexTranslateButton) => {
+    elTranslateButton.addEventListener('click', () => {
+      let slug = elTranslateButton.getAttribute('data-audio-link')
+      DOM.singleCountryTranslatePlayer.src = slug
+      DOM.singleCountryTranslatePlayer.play()
+    })
+  })
 }
 
-function countrySuppInfoExit(containerElem, container, body) {
-  containerElem.classList.remove('active')
-  container.classList.remove('active')
-  body.classList.remove('active')
+if (DOM.singlePlace != null) {
+  // Scroll reveal
+  window.sr = ScrollReveal()
+  // Description
+  sr.reveal('.single-place-description-title', { duration: 1000, origin: 'right' })
+  sr.reveal('.single-place-description-text', { duration: 1000, origin: 'right' })
+
+  // Video
+  sr.reveal('.single-place-video', { duration: 1000, viewFactor: 0.1 })
+
+  // Fact
+  sr.reveal('.single-place-fact', { duration: 1000 })
+  sr.reveal('.single-place-fact-img', { duration: 1000 })
+
+  //Cooking
+  sr.reveal('.single-place-cooking-img', { duration: 1000, origin: 'left'  })
+  sr.reveal('.single-place-cooking-text-title', { duration: 1000, origin: 'right'  })
+  sr.reveal('.single-place-cooking-text-subtitle', { duration: 1100, origin: 'right'  })
+  sr.reveal('.single-place-cooking-text-text', { duration: 1200, origin: 'right'  })
+
+  // Clothes
+  sr.reveal('.single-place-clothes-title', { duration: 1000, origin: 'left'  })
+  sr.reveal('.single-place-clothes-content', { duration: 1000, origin: 'left'  })
+  sr.reveal('.single-place-clothes-text-title', { duration: 1000, origin: 'right'  })
+  sr.reveal('.single-place-clothes-text-text', { duration: 1100, origin: 'right'  })
+
+  // Climate
+  sr.reveal('.single-place-climate-title', { duration: 1000, origin: 'left'  })
+  sr.reveal('.single-place-climate-content-seasons', { duration: 1000, origin: 'left'  })
+  sr.reveal('.single-place-climate-content-weather', { duration: 1000, origin: 'left'  })
 }
