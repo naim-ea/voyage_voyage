@@ -35,8 +35,6 @@
 
 const DOM = {}
 
-DOM.singlePlaceVideo = document.querySelector('.single-place-video video')
-
 window.onbeforeunload = () => { // Scroll to top when reload
   window.scrollTo(0, 0)
 }
@@ -67,29 +65,6 @@ function onVisibilityChange(el, callback) { // Check if visibility in viewport h
   }
 }
 
-const handler = onVisibilityChange(DOM.singlePlaceVideo, () => { // Handle the video
-  if (isElementInViewport(DOM.singlePlaceVideo) == true) {
-    DOM.singlePlaceVideo.play()
-    DOM.singlePlaceVideo.volume = 0.5
-  } else {
-    DOM.singlePlaceVideo.pause()
-  }
-
-})
-
-if (window.addEventListener) { // Event listener when viewport changing
-  addEventListener('DOMContentLoaded', handler, false)
-  addEventListener('load', handler, false)
-  addEventListener('scroll', handler, false)
-  addEventListener('resize', handler, false)
-} else if (window.attachEvent) {
-  attachEvent('onDOMContentLoaded', handler) // IE9+
-  attachEvent('onload', handler)
-  attachEvent('onscroll', handler)
-  attachEvent('onresize', handler)
-}
-
-
 let menu = document.querySelector('.menu-hamburger')
 let menu_content = document.querySelector('.menu-bg')
 menu.addEventListener('click', () => {
@@ -116,12 +91,59 @@ DOM.singleCountryTransportsButtonExit = document.querySelector('.single-country-
 DOM.singleCountryTransports = document.querySelector('.single-country-transports')
 DOM.singleCountryTranslatePlayer = document.querySelector('.single-country-sounds-translations-player')
 DOM.singleCountryTranslateButton = document.querySelectorAll('.single-country-sounds-translations-element .other-language')
+DOM.singleCountryVideo = document.querySelector('.single-country-famous-video')
 
 // Place page selector
 DOM.singlePlace = document.querySelector('.single-place')
+DOM.singlePlaceVideo = document.querySelector('.single-place-video video')
 
 // Country page
 if (DOM.singleCountry != null) {
+  // Scroll reveal
+  window.sr = ScrollReveal()
+  // Hero
+  sr.reveal('.single-country-title', { duration: 1000, origin: 'right' })
+  sr.reveal('.single-country-img', { duration: 1000, origin: 'right' })
+
+  // Data
+  sr.reveal('.single-country-data-first-row-flag', { duration: 700, origin: 'top' })
+  sr.reveal('.single-country-data-first-row-population', { duration: 700, origin: 'top' })
+  sr.reveal('.single-country-data-first-row-area', { duration: 700, origin: 'top' })
+  sr.reveal('.single-country-data-second-row', { duration: 700, origin: 'top' })
+
+  // Anthem
+  sr.reveal('.single-country-sounds-anthem-title', { duration: 700, origin: 'left' })
+  sr.reveal('.single-country-sounds-anthem-description', { duration: 700, origin: 'left' })
+
+  // Translation
+  sr.reveal('.single-country-sounds-translations-title', { duration: 500, origin: 'left' })
+  sr.reveal('.single-country-sounds-translations-cta', { duration: 500, origin: 'left' })
+  sr.reveal('.single-country-sounds-translations-element li', { duration: 700, origin: 'left' })
+  sr.reveal('.single-country-sounds-img img', { duration: 700, origin: 'right', viewFactor: 0.1 })
+
+  // Society
+  sr.reveal('.single-country-society-content-title', { duration: 700, origin: 'left' })
+  sr.reveal('.single-country-society-content-description', { duration: 500, origin: 'left' })
+  sr.reveal('.single-country-society-content-links div', { duration: 500, origin: 'top' })
+  sr.reveal('.single-country-society-img img', { duration: 700, origin: 'right' })
+
+  // History
+  sr.reveal('.single-country-history-content-title', { duration: 700, origin: 'left' })
+  sr.reveal('.single-country-history-content-description', { duration: 500, origin: 'left' })
+  sr.reveal('.single-country-history-img img', { duration: 700, origin: 'right' })
+
+  // Famous
+  sr.reveal('.single-country-famous-content-title', { duration: 700, origin: 'left' })
+  sr.reveal('.single-country-famous-content-description', { duration: 500, origin: 'left' })
+  sr.reveal('.single-country-famous-video', { duration: 700, origin: 'left', viewFactor: 0.1 })
+  sr.reveal('.single-country-famous-img img', { duration: 700, origin: 'right' })
+
+  // Visit
+  sr.reveal('.single-country-visit-content-title', { duration: 700, origin: 'left' })
+  sr.reveal('.single-country-visit-content-description', { duration: 500, origin: 'left' })
+  sr.reveal('.single-country-visit-img img', { duration: 700, origin: 'right' })
+  sr.reveal('.single-country-visit-img-content-content', { duration: 700, origin: 'top' })
+
   // Country other infos animations
   DOM.singleCountryLifeButton.addEventListener('click', () => {
     countrySuppInfoActive(DOM.singleCountryLife, DOM.singleCountry, DOM.body)
@@ -165,6 +187,28 @@ if (DOM.singleCountry != null) {
       DOM.singleCountryTranslatePlayer.play()
     })
   })
+
+  const handlerSingleCountry = onVisibilityChange(DOM.singleCountryVideo, () => { // Handle the video
+    if (isElementInViewport(DOM.singleCountryVideo) == true) {
+      DOM.singleCountryVideo.play()
+      DOM.singleCountryVideo.volume = 0.5
+    } else {
+      DOM.singleCountryVideo.pause()
+    }
+
+  })
+
+  if (window.addEventListener) { // Event listener when viewport changing
+    addEventListener('DOMContentLoaded', handlerSingleCountry, false)
+    addEventListener('load', handlerSingleCountry, false)
+    addEventListener('scroll', handlerSingleCountry, false)
+    addEventListener('resize', handlerSingleCountry, false)
+  } else if (window.attachEvent) {
+    attachEvent('onDOMContentLoaded', handlerSingleCountry) // IE9+
+    attachEvent('onload', handlerSingleCountry)
+    attachEvent('onscroll', handlerSingleCountry)
+    attachEvent('onresize', handlerSingleCountry)
+  }
 }
 
 if (DOM.singlePlace != null) {
@@ -182,19 +226,41 @@ if (DOM.singlePlace != null) {
   sr.reveal('.single-place-fact-img', { duration: 1000 })
 
   //Cooking
-  sr.reveal('.single-place-cooking-img', { duration: 1000, origin: 'left'  })
-  sr.reveal('.single-place-cooking-text-title', { duration: 1000, origin: 'right'  })
-  sr.reveal('.single-place-cooking-text-subtitle', { duration: 1100, origin: 'right'  })
-  sr.reveal('.single-place-cooking-text-text', { duration: 1200, origin: 'right'  })
+  sr.reveal('.single-place-cooking-img', { duration: 1000, origin: 'left' })
+  sr.reveal('.single-place-cooking-text-title', { duration: 1000, origin: 'right' })
+  sr.reveal('.single-place-cooking-text-subtitle', { duration: 1100, origin: 'right' })
+  sr.reveal('.single-place-cooking-text-text', { duration: 1200, origin: 'right' })
 
   // Clothes
-  sr.reveal('.single-place-clothes-title', { duration: 1000, origin: 'left'  })
-  sr.reveal('.single-place-clothes-content', { duration: 1000, origin: 'left'  })
-  sr.reveal('.single-place-clothes-text-title', { duration: 1000, origin: 'right'  })
-  sr.reveal('.single-place-clothes-text-text', { duration: 1100, origin: 'right'  })
+  sr.reveal('.single-place-clothes-title', { duration: 1000, origin: 'left' })
+  sr.reveal('.single-place-clothes-content', { duration: 1000, origin: 'left' })
+  sr.reveal('.single-place-clothes-text-title', { duration: 1000, origin: 'right' })
+  sr.reveal('.single-place-clothes-text-text', { duration: 1100, origin: 'right' })
 
   // Climate
-  sr.reveal('.single-place-climate-title', { duration: 1000, origin: 'left'  })
-  sr.reveal('.single-place-climate-content-seasons', { duration: 1000, origin: 'left'  })
-  sr.reveal('.single-place-climate-content-weather', { duration: 1000, origin: 'left'  })
+  sr.reveal('.single-place-climate-title', { duration: 1000, origin: 'left' })
+  sr.reveal('.single-place-climate-content-seasons', { duration: 1000, origin: 'left' })
+  sr.reveal('.single-place-climate-content-weather', { duration: 1000, origin: 'left' })
+
+  const handlerSinglePlace = onVisibilityChange(DOM.singlePlaceVideo, () => { // Handle the video
+    if (isElementInViewport(DOM.singlePlaceVideo) == true) {
+      DOM.singlePlaceVideo.play()
+      DOM.singlePlaceVideo.volume = 0.5
+    } else {
+      DOM.singlePlaceVideo.pause()
+    }
+
+  })
+
+  if (window.addEventListener) { // Event listener when viewport changing
+    addEventListener('DOMContentLoaded', handlerSinglePlace, false)
+    addEventListener('load', handlerSinglePlace, false)
+    addEventListener('scroll', handlerSinglePlace, false)
+    addEventListener('resize', handlerSinglePlace, false)
+  } else if (window.attachEvent) {
+    attachEvent('onDOMContentLoaded', handlerSinglePlace) // IE9+
+    attachEvent('onload', handlerSinglePlace)
+    attachEvent('onscroll', handlerSinglePlace)
+    attachEvent('onresize', handlerSinglePlace)
+  }
 }
