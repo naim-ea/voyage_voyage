@@ -16,4 +16,8 @@ body {
   font-family: Oxygen-Regular;
   font-size: 16px;
   overflow-x: hidden;
+
+  &.active{
+        overflow: hidden;
+    }
 }

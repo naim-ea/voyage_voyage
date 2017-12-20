@@ -3,6 +3,14 @@
     display: grid;
     grid-template-rows: [row1] 40px [middle] 100vh [space] 300px [data2] 35vh [data3] 10vh [data4] 480px [sounds] 110vh [society] 100vh [history] 100vh [famous] 100vh [visit] 140vh;
     grid-template-columns: [column1] 100px [middle] auto [column2] 100px [end];
+    transform: translateX(0);
+    transition: all 0.4s ease-out;
+
+    &.active{
+        transition: all 0.4s ease-out;
+        transform: translateX(-60vw);
+        pointer-events: none;
+    }
 
     &-title{
         width: 50%;
@@ -543,7 +551,12 @@
     top: 0;
     right: 0;
     transform: translateX(100vw);
+    transition: all 0.4s ease-out;
 
+    &.active{
+        transition: all 0.4s ease-out;
+        transform: translateX(0);
+    }
     &-container{
         width: 85%;
         height: 100%;
@@ -606,6 +619,12 @@
     top: 0;
     right: 0;
     transform: translateX(100vw);
+    transition: all 0.4s ease-out;
+
+    &.active{
+        transition: all 0.4s ease-out;
+        transform: translateX(0);
+    }
 
     &-container{
         width: 85%;
