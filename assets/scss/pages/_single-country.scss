@@ -69,7 +69,7 @@
         grid-column-end: column2;
         width: 100%;
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
         text-align: center;
 
         &-flag{
@@ -168,6 +168,7 @@
     }
 
     &-data-second-row{
+
         grid-row-start: data3;
         grid-column-start: middle;
         grid-column-end: column2;
@@ -177,6 +178,7 @@
         text-align: center;
 
         &-continent{
+            margin-left: 100px;
             position: relative;
             &-title{
                 font-family: "Signika";
@@ -242,7 +244,7 @@
         grid-column-end: column2;
         display: flex;
         flex-direction: column;
-        justify-content: space-around;
+        justify-content: space-between;
         position: relative;
 
         &-anthem{
@@ -625,7 +627,7 @@
                 }
 
                 &:nth-of-type(4){
-                    bottom: 150px;
+                    top: 770px;
                     left: 240px;
                 }
             }
@@ -647,7 +649,7 @@
                 }
 
                 &:nth-of-type(3){
-                    bottom: 230px;
+                    top: 610px;
                     left: 150px;
                 }
 
@@ -699,6 +701,116 @@
             }
         }
     }
+
+    @media screen and (max-width:1200px){
+        grid-template-columns: [column1] 0px [middle] auto [column2] 0px [end];
+
+        &-title{
+            text-align: left;
+            margin-left: 50px;
+        }
+
+        &-img{
+            text-align: center;
+        }
+
+        &-data-first-row{
+            width: 100vw;
+            margin: 0 auto;
+            grid-column-start: inherit;
+            grid-column-end: inherit;
+            &-flag{
+                &-title{
+                    font-size: 24px;
+                }
+                &-data{
+                    font-size: 24px;
+                }
+            }
+            &-population{
+                &-title{
+                    font-size: 24px;
+                }
+                &-data{
+                    font-size: 24px;
+                }
+            }
+            &-area{
+                &-title{
+                    font-size: 24px;
+                }
+                &-data{
+                    font-size: 24px;
+                }
+            }
+        }
+
+        &-data-second-row{
+            width: 100vw;
+            margin: 0 auto;
+            grid-column-start: inherit;
+            grid-column-end: inherit;
+            &-continent{
+                margin-left: 150px;
+                &-title{
+                    font-size: 24px;
+                }
+                &-data{
+                    font-size: 24px;
+                }
+            }
+            &-capital{
+                margin-right: 150px;
+                &-title{
+                    font-size: 24px;
+                }
+                &-data{
+                    font-size: 24px;
+                }
+            }
+        }
+
+        &-sounds{
+            margin-left: 50px;
+
+            &-anthem{
+                margin-top: 20px;
+            }
+
+            &-translations{
+                margin-top: 80px;
+            }
+        }
+
+        &-society{
+            &-content{
+                margin-left: 50px;
+            }
+        }
+
+        &-history{
+            &-content{
+                margin-left: 50px;
+            }
+
+            &-img{
+                align-items: flex-start;
+            }
+        }
+
+        &-famous{
+            &-content{
+                margin-left: 50px;
+            }
+        }
+
+        &-visit{
+            &-content{
+                margin-left: 50px;
+                width: 300px;
+            }
+        }
+    }
 }
 
 .single-country-transports{
@@ -723,8 +835,8 @@
 
         .single-country-transports-backtocountry{
             position: absolute;
-            top: 20px;
-            right: 20px;
+            top: 0px;
+            right: 0px;
             display: flex;
             align-items: center;
             justify-content: space-around;
@@ -798,8 +910,8 @@
 
         .single-country-life-backtocountry{
             position: absolute;
-            top: 20px;
-            right: 20px;
+            top: 0px;
+            right: 0px;
             display: flex;
             align-items: center;
             justify-content: space-around;
@@ -848,4 +960,6 @@
             }
         }
     }
+
+
 }
