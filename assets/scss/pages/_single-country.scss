@@ -277,8 +277,8 @@
 
     background: $white-alt;
     display: grid;
-    grid-template-rows: [row1] 40px [middle] 100vh [space] 50px [data] 40vh [data2] 40vh [data3] 40vh [space] 50px [sounds] 100vh [space] 50px [society] 100vh [space] 50px [history] 100vh [space] 50px [famous] 100vh;
-    grid-template-columns: [column1] 100px [middle] auto [column2] 100px;
+    grid-template-rows: [row1] 40px [middle] 100vh [space] 50px [data] 40vh [data2] 40vh [data3] 10vh [data4] 480px [sounds] 100vh [society] 100vh [history] 100vh [famous] 100vh;
+    grid-template-columns: [column1] 100px [middle] auto [column2] 100px [end];
 
     &-title{
         grid-column-start: middle;
@@ -433,9 +433,23 @@
         }
     }
 
+    &-data-third-row{
+        grid-row-start: data4;
+        grid-column-start: column1;
+        grid-column-end: end;
+
+        img{
+            width: 100%;
+        }
+    }
+
     &-sounds{
         grid-row-start: sounds;
-        grid-column-start: middle;
+        grid-column-start: column1;
+        grid-column-end: end;
+        background: url('../img/inde_sound.png');
+        background-size: cover;
+        padding: 50px 0px 0px 100px;
 
         &-anthem{
             width: 100%;
@@ -502,14 +516,16 @@
 
     &-society{
         grid-row-start: society;
-        grid-column-start: middle;
-        grid-column-end: column2;
+        grid-column-start: column1;
+        grid-column-end: end;
+        background-image: url('../img/inde_society.png');
         display: flex;
         flex-direction: row;
         justify-content: center;
         align-items: space-between;
 
         &-content{
+            margin-left: 100px;
             width: 50%;
             height: 100%;
             display: flex;
@@ -579,14 +595,17 @@
 
     &-history{
         grid-row-start: history;
-        grid-column-start: middle;
-        grid-column-end: column2;
+        grid-column-start: column1;
+        grid-column-end: end;
+        background-image: url('../img/inde_history.png');
+        background-size: cover;
         display: flex;
         flex-direction: row;
         justify-content: center;
         align-items: space-between;
 
         &-content{
+            margin-left: 100px;
             width: 50%;
             height: 100%;
             display: flex;
@@ -621,10 +640,13 @@
 
     &-famous{
         grid-row-start: famous;
-        grid-column-start: middle;
-        grid-column-end: column2;
+        grid-column-start: column1;
+        grid-column-end: end;
+        background-image: url('../img/inde_famous.png');
+        background-size: cover;
 
         &-content{
+            margin-left: 100px;
             height: 100%;
             display: flex;
             flex-direction: column;
@@ -659,6 +681,132 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+        }
+    }
+}
+
+.single-country-transports{
+    background: $white-alt;
+    width: 60vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: 0;
+    transform: translateX(100vw);
+
+    &-container{
+        width: 85%;
+        height: 100%;
+        margin: 0 auto;
+        position: relative;
+
+        .single-country-transports-backtocountry{
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 30px;
+            width: 140px;
+            height: 40px;
+            border-radius: 20px;
+            font-family: Oxygen-Bold;
+            color: $black-alt;
+            font-size: 14px;
+            text-transform: uppercase;
+            -webkit-box-shadow: 0px 3px 7px 0px rgba(0,0,0,0.25);
+            -moz-box-shadow: 0px 3px 7px 0px rgba(0,0,0,0.25);
+            box-shadow: 0px 3px 7px 0px rgba(0,0,0,0.25);
+            cursor: pointer;
+            background: $white-alt;
+            margin-top: 30px;
+        }
+        
+        .single-country-transports-content{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            &-title{
+                font-size: 40px;
+                color: $black-alt;
+                font-family: "Signika";
+                font-weight: bold;
+            }
+    
+    
+            &-description{
+                font-size: 16px;
+                color: $black-alt;
+                font-family: "Oxygen-Regular";
+                margin-top: 20px;
+                line-height: 24px;
+            }
+        }
+    }
+}
+
+.single-country-life{
+    background: $white-alt;
+    width: 60vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: 0;
+    transform: translateX(100vw);
+
+    &-container{
+        width: 85%;
+        height: 100%;
+        margin: 0 auto;
+        position: relative;
+
+        .single-country-life-backtocountry{
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 30px;
+            width: 140px;
+            height: 40px;
+            border-radius: 20px;
+            font-family: Oxygen-Bold;
+            color: $black-alt;
+            font-size: 14px;
+            text-transform: uppercase;
+            -webkit-box-shadow: 0px 3px 7px 0px rgba(0,0,0,0.25);
+            -moz-box-shadow: 0px 3px 7px 0px rgba(0,0,0,0.25);
+            box-shadow: 0px 3px 7px 0px rgba(0,0,0,0.25);
+            cursor: pointer;
+            background: $white-alt;
+            margin-top: 30px;
+        }
+        
+        .single-country-life-content{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            &-title{
+                font-size: 40px;
+                color: $black-alt;
+                font-family: "Signika";
+                font-weight: bold;
+            }
+    
+    
+            &-description{
+                font-size: 16px;
+                color: $black-alt;
+                font-family: "Oxygen-Regular";
+                margin-top: 20px;
+                line-height: 24px;
+            }
         }
     }
 }
