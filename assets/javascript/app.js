@@ -35,8 +35,6 @@
 
 const DOM = {}
 
-DOM.singlePlaceVideo = document.querySelector('.single-place-video video')
-
 window.onbeforeunload = () => { // Scroll to top when reload
   window.scrollTo(0, 0)
 }
@@ -67,29 +65,6 @@ function onVisibilityChange(el, callback) { // Check if visibility in viewport h
   }
 }
 
-const handler = onVisibilityChange(DOM.singlePlaceVideo, () => { // Handle the video
-  if (isElementInViewport(DOM.singlePlaceVideo) == true) {
-    DOM.singlePlaceVideo.play()
-    DOM.singlePlaceVideo.volume = 0.5
-  } else {
-    DOM.singlePlaceVideo.pause()
-  }
-
-})
-
-if (window.addEventListener) { // Event listener when viewport changing
-  addEventListener('DOMContentLoaded', handler, false)
-  addEventListener('load', handler, false)
-  addEventListener('scroll', handler, false)
-  addEventListener('resize', handler, false)
-} else if (window.attachEvent) {
-  attachEvent('onDOMContentLoaded', handler) // IE9+
-  attachEvent('onload', handler)
-  attachEvent('onscroll', handler)
-  attachEvent('onresize', handler)
-}
-
-
 let menu = document.querySelector('.menu-hamburger')
 let menu_content = document.querySelector('.menu-bg')
 menu.addEventListener('click', () => {
@@ -116,9 +91,11 @@ DOM.singleCountryTransportsButtonExit = document.querySelector('.single-country-
 DOM.singleCountryTransports = document.querySelector('.single-country-transports')
 DOM.singleCountryTranslatePlayer = document.querySelector('.single-country-sounds-translations-player')
 DOM.singleCountryTranslateButton = document.querySelectorAll('.single-country-sounds-translations-element .other-language')
+DOM.singleCountryVideo = document.querySelector('.single-country-famous-video')
 
 // Place page selector
 DOM.singlePlace = document.querySelector('.single-place')
+DOM.singlePlaceVideo = document.querySelector('.single-place-video video')
 
 // Country page
 if (DOM.singleCountry != null) {
@@ -210,6 +187,28 @@ if (DOM.singleCountry != null) {
       DOM.singleCountryTranslatePlayer.play()
     })
   })
+
+  const handlerSingleCountry = onVisibilityChange(DOM.singleCountryVideo, () => { // Handle the video
+    if (isElementInViewport(DOM.singleCountryVideo) == true) {
+      DOM.singleCountryVideo.play()
+      DOM.singleCountryVideo.volume = 0.5
+    } else {
+      DOM.singleCountryVideo.pause()
+    }
+
+  })
+
+  if (window.addEventListener) { // Event listener when viewport changing
+    addEventListener('DOMContentLoaded', handlerSingleCountry, false)
+    addEventListener('load', handlerSingleCountry, false)
+    addEventListener('scroll', handlerSingleCountry, false)
+    addEventListener('resize', handlerSingleCountry, false)
+  } else if (window.attachEvent) {
+    attachEvent('onDOMContentLoaded', handlerSingleCountry) // IE9+
+    attachEvent('onload', handlerSingleCountry)
+    attachEvent('onscroll', handlerSingleCountry)
+    attachEvent('onresize', handlerSingleCountry)
+  }
 }
 
 if (DOM.singlePlace != null) {
@@ -242,4 +241,26 @@ if (DOM.singlePlace != null) {
   sr.reveal('.single-place-climate-title', { duration: 1000, origin: 'left' })
   sr.reveal('.single-place-climate-content-seasons', { duration: 1000, origin: 'left' })
   sr.reveal('.single-place-climate-content-weather', { duration: 1000, origin: 'left' })
+
+  const handlerSinglePlace = onVisibilityChange(DOM.singlePlaceVideo, () => { // Handle the video
+    if (isElementInViewport(DOM.singlePlaceVideo) == true) {
+      DOM.singlePlaceVideo.play()
+      DOM.singlePlaceVideo.volume = 0.5
+    } else {
+      DOM.singlePlaceVideo.pause()
+    }
+
+  })
+
+  if (window.addEventListener) { // Event listener when viewport changing
+    addEventListener('DOMContentLoaded', handlerSinglePlace, false)
+    addEventListener('load', handlerSinglePlace, false)
+    addEventListener('scroll', handlerSinglePlace, false)
+    addEventListener('resize', handlerSinglePlace, false)
+  } else if (window.attachEvent) {
+    attachEvent('onDOMContentLoaded', handlerSinglePlace) // IE9+
+    attachEvent('onload', handlerSinglePlace)
+    attachEvent('onscroll', handlerSinglePlace)
+    attachEvent('onresize', handlerSinglePlace)
+  }
 }
