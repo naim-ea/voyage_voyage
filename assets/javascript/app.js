@@ -117,7 +117,10 @@ DOM.singleCountryLife = document.querySelector('.single-country-life')
 DOM.singleCountryTransportsButton = document.querySelector('.single-country-society-content-links-transports')
 DOM.singleCountryTransportsButtonExit = document.querySelector('.single-country-transports-backtocountry')
 DOM.singleCountryTransports = document.querySelector('.single-country-transports')
+DOM.singleCountryTranslatePlayer = document.querySelector('.single-country-sounds-translations-player')
+DOM.singleCountryTranslateButton = document.querySelectorAll('.single-country-sounds-translations-element .other-language')
 
+// Country other infos animations
 DOM.singleCountryLifeButton.addEventListener('click', () => {
   countrySuppInfoActive(DOM.singleCountryLife, DOM.singleCountry, DOM.body)
 })
@@ -151,3 +154,13 @@ function countrySuppInfoExit(containerElem, container, body) {
   container.classList.remove('active')
   body.classList.remove('active')
 }
+
+// Traduction button
+DOM.singleCountryTranslateButton.forEach((elTranslateButton, indexTranslateButton) => {
+  elTranslateButton.addEventListener('click', () => {
+    let slug = elTranslateButton.getAttribute('data-audio-link')
+    DOM.singleCountryTranslatePlayer.src = slug
+    DOM.singleCountryTranslatePlayer.play()
+  })
+})
+
