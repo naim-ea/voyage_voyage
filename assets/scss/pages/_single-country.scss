@@ -727,8 +727,7 @@
             right: 20px;
             display: flex;
             align-items: center;
-            justify-content: flex-end;
-            padding-right: 30px;
+            justify-content: space-around;
             width: 140px;
             height: 40px;
             border-radius: 20px;
@@ -764,6 +763,13 @@
                 font-family: "Oxygen-Regular";
                 margin-top: 20px;
                 line-height: 24px;
+                width: 100%;
+            }
+
+            img{
+                margin-top: 20px;
+                width: 600px;
+                height: auto;
             }
         }
     }
@@ -796,8 +802,7 @@
             right: 20px;
             display: flex;
             align-items: center;
-            justify-content: flex-end;
-            padding-right: 30px;
+            justify-content: space-around;
             width: 140px;
             height: 40px;
             border-radius: 20px;
@@ -833,6 +838,13 @@
                 font-family: "Oxygen-Regular";
                 margin-top: 20px;
                 line-height: 24px;
+                width: 100%;
+            }
+
+            img{
+                margin-top: 20px;
+                width: 600px;
+                height: auto;
             }
         }
     }

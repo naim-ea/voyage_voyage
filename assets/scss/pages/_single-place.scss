@@ -50,6 +50,7 @@
             display: flex;
             align-items: center;
             justify-content: space-around;
+            padding: 10px;
             width: 250px;
             height: 70px;
             border-radius: 68px;
@@ -114,7 +115,7 @@
         &-text{
             width: 70%;
             font-size: 18px;
-            line-height: 32px;
+            line-height: 27px;
             font-family: "Oxygen-Regular";
         }
     }
@@ -127,9 +128,9 @@
         grid-column-end : container2;
         grid-row-start: video;
         video{
-            width: auto;
+            width: 90%;
             margin: 0 auto;
-            height: 100%;
+            height: auto;
         }
 
     }
@@ -155,7 +156,7 @@
             margin-top: 50px;
             width: 70%;
             font-size: 18px;
-            line-height: 32px;
+            line-height: 27px;
             font-family: "Oxygen-Regular";
         }
     }
@@ -179,8 +180,17 @@
     &-cooking-img{
         text-align: right;
         grid-row-start: cooking;
-        grid-column-start: container1;
+        grid-column-start: left;
         grid-column-end: left2;
+        width: 100%;
+        height: 100%;
+        margin-top: 70px;
+        margin-left: 10px;
+
+        img{
+            width: 460px;
+            height: auto;
+        }
     }
 
     &-cooking-text{
@@ -216,7 +226,7 @@
             margin-top: 50px;
             width: 70%;
             font-size: 18px;
-            line-height: 32px;
+            line-height: 27px;
             font-family: "Oxygen-Regular";
         }
     }
@@ -277,7 +287,7 @@
             margin-top: 50px;
             width: 70%;
             font-size: 18px;
-            line-height: 32px;
+            line-height: 27px;
             font-family: "Oxygen-Regular";
         }
     }
@@ -312,11 +322,11 @@
         }
 
         &-weather{
-            font-family: "Signika";
+            font-family: "Oxygen-Regular";
             font-size: 18px;
             color: $black-alt;
             margin-top: 15px;
-            line-height: 24px;
+            line-height: 27px;
         }
 
     }
@@ -362,7 +372,7 @@
             font-size: 18px;
             color: $black-alt;
             margin-top: 15px;
-            line-height: 24px;
+            line-height: 27px;
         }
     }
 
@@ -380,6 +390,15 @@
         img{
             height: auto;
             width: 100%;
+        }
+    }
+
+    &.new-delhi{
+        .single-place-clothes-content{
+            img{
+                width: auto;
+                height: 100%;
+            }
         }
     }
 }
@@ -418,5 +437,28 @@
     position: fixed;
     bottom: 25px;
     right: 25px;
+    cursor: pointer;
+}
+
+.single-place-streetview{
+    position: fixed;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 10px;
+    width: 250px;
+    height: 70px;
+    border-radius: 68px;
+    font-family: Oxygen-Bold;
+    color: $white-alt;
+    font-size: 14px;
+    text-transform: uppercase;
+    -webkit-box-shadow: 0px 2px 7px 0px rgba(0,0,0,0.25);
+    -moz-box-shadow: 0px 2px 7px 0px rgba(0,0,0,0.25);
+    box-shadow: 0px 2px 7px 0px rgba(0,0,0,0.25);
+    background: $title-color;
     cursor: pointer;
 }
