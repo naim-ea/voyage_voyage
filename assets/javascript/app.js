@@ -248,6 +248,11 @@ if (DOM.singlePlace != null) {
   sr.reveal('.single-place-climate-content-seasons', { duration: 1000, origin: 'left' })
   sr.reveal('.single-place-climate-content-weather', { duration: 1000, origin: 'left' })
 
+  // Climate
+  sr.reveal('.single-place-wildlife-title', { duration: 1000, origin: 'left' })
+  sr.reveal('.single-place-wildlife-description', { duration: 1000, origin: 'left' })
+  sr.reveal('.single-place-wildlife-img', { duration: 1000, origin: 'left' })
+
   const handlerSinglePlace = onVisibilityChange(DOM.singlePlaceVideo, () => { // Handle the video
     if (isElementInViewport(DOM.singlePlaceVideo) == true) {
       DOM.singlePlaceVideo.play()
