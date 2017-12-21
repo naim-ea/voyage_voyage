@@ -503,208 +503,205 @@
   }
 
   @media screen and (max-width:1024px) {
-    .container {
-      grid-template-columns: [left] 40% [left2] 10% [right] 50% [container2];
-      grid-template-rows: [start] 1000px [part2] 500px [video] 680px [space] 100px [fact] 900px [cooking] 900px [space] 50px [clothes] 950px [space] 100px [climate] 1600px [space] 100px [wildlife] 1400px;
+      &.mumbai, &.new-delhi, &.bangalore{
+
+            .container {
+            grid-template-columns: [left] 40% [left2] 10% [right] 50% [container2];
+            grid-template-rows: [start] 1000px [part2] 500px [video] 680px [space] 100px [fact] 900px [cooking] 900px [space] 50px [clothes] 950px [space] 100px [climate] 1600px [space] 100px [wildlife] 1200px;
 
 
-      .single-place-description {
-        grid-column-start: left2;
-        grid-column-end: end;
-        justify-content: center;
-        width: 600px;
+            .single-place-description {
+                grid-column-start: left2;
+                grid-column-end: end;
+                justify-content: center;
+                width: 600px;
 
-        &-text {
-          margin-top: 40px;
-          font-size: 14px;
-          line-height: 22px;
+                &-text {
+                margin-top: 40px;
+                font-size: 14px;
+                line-height: 22px;
+                }
+            }
+
+            .single-place-video{
+                width: 100%;
+                height: auto;
+            }
+
+            .single-place-fact-img {
+            }
+
+            .single-place-fact {
+                margin-top: 0px;
+                margin-left: 20px;
+
+                &-text {
+                    font-size: 14px;
+                    line-height: 22px;
+                    width: 100%;
+                }
+            }
+
+            .single-place-cooking-img {
+                margin-left: -70px;
+            }
+
+            .single-place-cooking-text {
+                h2 {
+                margin-left: 0;
+                }
+                &-subtitle {
+                margin-left: 0;
+                }
+                &-text {
+                margin-left: 0;
+                font-size: 14px;
+                line-height: 22px;
+                width: 500px;
+                }
+            }
+
+            .single-place-clothes-title {
+                grid-column-start: left;
+                grid-column-end: container2;
+                margin: 0;
+                text-align: center;
+                width: 100%;
+            }
+
+            .single-place-clothes-content {
+                img {
+                height: 100%;
+                width: auto;
+                }
+            }
+
+            .single-place-clothes-text {
+                margin-left: 0px;
+
+                &-text {
+                width: 500px;
+                font-size: 14px;
+                line-height: 22px;
+                }
+            }
+
+            .single-place-climate-title {
+                margin-top: 250px;
+            }
+
+            .single-place-climate-content {
+                margin-top: 350px;
+
+                &-weather {
+                    font-size: 14px;
+                    line-height: 22px;
+                }
+            }
+
+            .single-place-wildlife-img {
+                display: block;
+                grid-column-start: left;
+                grid-column-end: container2;
+                width: 100%;
+                text-align: center;
+                margin-top: 400px;
+            }
+
+            .single-place-wildlife {
+                display: block;
+                grid-column-start: left;
+                grid-column-end: container2;
+                width: 100%;
+                margin-left: 0px;
+
+                &-title {
+                text-align: center;
+                }
+
+                &-description {
+                width: 800px;
+                font-size: 14px;
+                line-height: 22px;
+                margin: 40px auto;
+                }
+            }
         }
-      }
-
-      .single-place-video{
-          width: 100%;
-          height: auto;
-      }
-
-      .single-place-fact-img {
-        display: block;
-        grid-column-start: left;
-        grid-column-end: container2;
-        width: 100%;
-        text-align: center;
-      }
-
-      .single-place-fact {
-        display: block;
-        margin-top: 640px;
-        grid-column-start: left;
-        grid-column-end: container2;
-        width: 924px;
-
-        &-title {
-          text-align: center;
-        }
-
-        &-text {
-          width: 800px;
-          font-size: 14px;
-          line-height: 22px;
-          margin: 40px auto;
-        }
-      }
-
-      .single-place-cooking-img {
-        margin-left: -70px;
-      }
-
-      .single-place-cooking-text {
-        h2 {
-          margin-left: 0;
-        }
-        &-subtitle {
-          margin-left: 0;
-        }
-        &-text {
-          margin-left: 0;
-          font-size: 14px;
-          line-height: 22px;
-          width: 500px;
-        }
-      }
-
-      .single-place-clothes-title {
-        grid-column-start: left;
-        grid-column-end: container2;
-        margin: 0;
-        text-align: center;
-        width: 100%;
-      }
-
-      .single-place-clothes-content {
-        img {
-          height: 100%;
-          width: auto;
-        }
-      }
-
-      .single-place-clothes-text {
-        margin-left: 0px;
-
-        &-text {
-          width: 500px;
-          font-size: 14px;
-          line-height: 22px;
-        }
-      }
-
-      .single-place-climate-title {
-        margin-top: 250px;
-      }
-
-      .single-place-climate-content {
-        margin-top: 350px;
-
-        &-weather {
-            font-size: 14px;
-            line-height: 22px;
-        }
-      }
-
-      .single-place-wildlife-img {
-        display: block;
-        grid-column-start: left;
-        grid-column-end: container2;
-        width: 100%;
-        text-align: center;
-      }
-
-      .single-place-wildlife {
-        display: block;
-        margin-top: 640px;
-        grid-column-start: left;
-        grid-column-end: container2;
-        width: 100%;
-        margin-left: 0px;
-
-        &-title {
-          text-align: center;
-        }
-
-        &-description {
-          width: 800px;
-          font-size: 14px;
-          line-height: 22px;
-          margin: 40px auto;
-        }
-      }
     }
   }
 
   @media screen and (max-width:768px) {
-    .container {
-      grid-template-columns: [left] 40% [left2] 10% [right] 50% [container2];
-      grid-template-rows: [start] 1000px [part2] 500px [video] 580px [fact] 900px [space] 50px [cooking] 1100px [space] 200px [clothes] 800px [space] 100px [climate] 1200px [space] 200px [wildlife] 1300px;
+      &.new-delhi, &.mumbai, &.bangalore{
+        .container {
+        grid-template-columns: [left] 40% [left2] 10% [right] 50% [container2];
+        grid-template-rows: [start] 1000px [part2] 500px [video] 580px [fact] 900px [cooking] 700px [space] 200px [clothes] 800px [climate] 1200px [space] 50px [wildlife] 1000px;
 
-      .single-place-title {
-        &-text {
-          h1 {
-            font-size: 60px;
-          }
+        .single-place-title {
+            &-text {
+                h1 {
+                    font-size: 60px;
+                }
+            }
         }
-      }
 
-      .single-place-description {
-        grid-column-start: left;
-        margin-left: 50px;
-      }
-
-      .single-place-fact {
-        width: 728px;
-
-        &-text {
-          width: 688px;
+        .single-place-description {
+            grid-column-start: left;
+            margin-left: 50px;
         }
-      }
 
-      .single-place-cooking-img {
-        margin-top: 0px;
-      }
-
-      .single-place-cooking-text {
-        margin-left: -80px;
-        justify-content: flex-end;
-      }
-
-      .single-place-clothes-content {
-        margin-left: -50px;
-      }
-
-      .single-place-clothes-text {
-        margin-left: -40px;
-
-        &-text {
-          width: 450px;
+        .single-place-fact-img {
+            img{
+                width: 100%;
+            }
         }
-      }
 
-      .single-place-climate-content {
-        width: 120%;
-      }
+        .single-place-fact {
+            width: 100%;
 
-      .single-place-climate-img {
-        grid-column-end: end;
-        margin-top: 50px;
-      }
-
-      .single-place-wildlife {
-        margin-top: 500px;
-        margin-left: 0px;
-        width: 100%;
-
-        &-description {
-          width: 688px;
+            &-text {
+                width: 100%;
+            }
         }
-      }
+
+        .single-place-cooking-img {
+            margin-top: 0px;
+        }
+
+        .single-place-cooking-text {
+            margin-left: -80px;
+            justify-content: flex-end;
+        }
+
+        .single-place-clothes-content {
+            margin-left: -50px;
+        }
+
+        .single-place-clothes-text {
+            margin-left: -40px;
+
+            &-text {
+            width: 450px;
+            }
+        }
+
+        .single-place-climate-content {
+            width: 120%;
+        }
+
+        .single-place-climate-img {
+            grid-column-end: end;
+            margin-top: 50px;
+        }
+
+        .single-place-wildlife {
+            margin-left: 0px;
+            width: 100%;
+
+            &-description {
+                width: 688px;
+            }
+        }
+        }
     }
   }
 
