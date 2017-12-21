@@ -65,10 +65,9 @@ function onVisibilityChange(el, callback) { // Check if visibility in viewport h
   }
 }
 
-
-if (DOM.singleCountry != null || DOM.singlePlace != null) {
-  let menu = document.querySelector('.menu-hamburger')
-  let menu_content = document.querySelector('.menu-bg')
+let menu = document.querySelector('.menu-hamburger')
+let menu_content = document.querySelector('.menu-bg')
+if (menu != null) {
   menu.addEventListener('click', () => {
     if (menu.classList.contains('active')) {
       menu.classList.remove('active')
