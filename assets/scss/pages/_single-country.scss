@@ -638,21 +638,24 @@
                 position: absolute;
                 width: 340px;
                 height: 150px;
-                background: grey;
+                background-size: cover;
 
                 &:first-of-type{
                     top: 40px;
                     left: 135px;
+                    background-image: url('../img/new_delhi_pin.png');
                 }
 
                 &:nth-of-type(2){
                     top: 360px;
                     left: 25px;
+                    background-image: url('../img/mumbai_pin.png');
                 }
 
                 &:nth-of-type(3){
                     top: 610px;
                     left: 150px;
+                    background-image: url('../img/bangalore_pin.png');
                 }
 
                 &-title{
