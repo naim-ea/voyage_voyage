@@ -487,8 +487,10 @@ if (DOM.singlePlace != null) {
     elButtonStreetview.addEventListener('click', () => {
       DOM.singlePlaceStreetview.classList.add('active')
       DOM.singlePlaceStreetviewAudio.play()
+      DOM.singlePlaceSpeakerAudio.play()
       DOM.singlePlaceStreetviewAudio.volume = 0.7
       DOM.singlePlaceSpeakerAudio.volume = 0.3
+      DOM.singlePlaceVideo.pause()
       // DOM.singlePlaceStreetviewMap.classList.add('active')
     })
   })
