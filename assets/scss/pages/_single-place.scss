@@ -899,12 +899,12 @@
 
 .single-place-streetview-area {
   position: fixed;
-  width: 97vw;
-  height: 95vh;
+  width: 100vw;
+  height: 100vh;
   transform: translateX(-100vw);
   z-index: 3; // display: none;
-  top: 2.5vh;
-  left: 1.5vw;
+  top: 0;
+  left: 10;
   background-color: $white;
   transition: all 0.4s ease-out;
 
