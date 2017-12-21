@@ -65,17 +65,20 @@ function onVisibilityChange(el, callback) { // Check if visibility in viewport h
   }
 }
 
-let menu = document.querySelector('.menu-hamburger')
-let menu_content = document.querySelector('.menu-bg')
-menu.addEventListener('click', () => {
-  if (menu.classList.contains('active')) {
-    menu.classList.remove('active')
-    menu_content.classList.remove('active')
-  } else {
-    menu.classList.add('active')
-    menu_content.classList.add('active')
-  }
-})
+
+if (DOM.singleCountry != null || DOM.singlePlace != null) {
+  let menu = document.querySelector('.menu-hamburger')
+  let menu_content = document.querySelector('.menu-bg')
+  menu.addEventListener('click', () => {
+    if (menu.classList.contains('active')) {
+      menu.classList.remove('active')
+      menu_content.classList.remove('active')
+    } else {
+      menu.classList.add('active')
+      menu_content.classList.add('active')
+    }
+  })
+}
 
 
 
