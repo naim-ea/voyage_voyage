@@ -1096,6 +1096,226 @@
             }
         }
 
+        @media screen and (max-width:520px){
+            grid-template-rows: [row1] 40px [middle] 990px [data2] 500px [data3] 150px [data4] 0px [space] 50px [sounds] 850px [space] 480px [society] 600px [history] 700px [famous] 550px [visit] 850px;
+            grid-template-columns: [column1] 7vw [middle] 86vw [column2] 7vw [end];
+            
+            &-data-first-row{
+                display: block;
+
+                &-flag{
+                    margin-top: 40px;
+                    &:after{
+                        display: none;
+                    }
+                }
+                &-population{
+                    margin-top: 40px;
+                    &:after{
+                        display: none;
+                    }
+                }
+                &-area{
+                    margin-top: 40px;
+                    &:after{
+                        display: none;
+                    }
+                }
+            }
+
+            &-data-second-row{
+                display: block;
+
+
+                &-continent{
+                    margin: 40px auto 0;
+                    &:after{
+                        display: none;
+                    }
+                }
+                &-capital{
+                    margin: 40px auto 0;
+                    &:after{
+                        display: none;
+                    }
+                }
+            }
+
+            &-data-third-row{
+                display: none;
+            }
+
+            &-sounds{
+                margin-left: 0px;
+                width: 100%;
+
+                &-anthem{
+                    &-content{
+                        &-bar{
+                            display: none;
+                        }
+                    }
+                }
+
+                &-img{
+                    display: none;
+                }
+
+                &-translations{
+                    width: 100%;
+
+                    &-cta{
+                        font-size: 14px;
+                    }
+
+                    &-element{
+                        display: block;
+                        width: 100%;
+                        margin-top: 10px;
+
+                        li{
+                            font-size: 14px;
+                            text-align: center;
+                            width: 100%;
+
+                            &:first-of-type{
+                                width: 100%;
+                            }
+
+                            &.other-language{
+                                font-size: 14px;
+                                width: 100%;
+                                margin-top: 10px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            &-society{
+                &-content{
+                    &-description{
+                        font-size: 14px;
+                        line-height: 21px;
+                    }
+
+                    &-links{
+                        &-transports{
+                            font-size: 12px;
+                            font-family: "Oxygen-Regular";
+                            width: 130px;
+                            text-transform: unset;
+                        }
+                        &-life{
+                            font-size: 12px;
+                            font-family: "Oxygen-Regular";
+                            margin-right: 0;
+                            width: 130px;
+                            text-transform: unset;
+                        }
+                    }
+                }
+
+                &-img{
+                    display: none;
+                }
+            }
+
+            &-history{
+                &-content{
+                    &-description{
+                        font-size: 14px;
+                        line-height: 21px;
+                    }
+                }
+
+                &-img{
+                    display: none;
+                }
+            }
+
+            &-famous{
+                &-content{
+                    &-description{
+                        font-size: 14px;
+                        line-height: 21px;
+                    }
+
+                    video{
+                        width: 100%;
+                    }
+                }
+
+                &-img{
+                    display: none;
+                }
+            }
+
+            &-visit{
+                width: 100%;
+
+                &-content{
+                    width: 86vw;
+                    &-title{
+                        text-align: left;
+                    }
+
+                    &-description{
+                        font-size: 14px;
+                        line-height: 21px;
+                    }
+                }
+
+                &-img{
+                    img:first-of-type{
+                        display: none;
+                    }
+
+                    &-pin{
+                        display: none;
+                    }
+
+                    &-content:first-of-type{
+                        position: relative;
+                        top: 0;
+                        left: 0;
+                        width: 86vw;
+                        display: flex;
+                        flex-direction: column;
+                    }
+
+                    &-content:nth-of-type(2){
+                        position: relative;
+                        top: 0;
+                        left: 0;
+                        width: 86vw;
+                        display: flex;
+                        flex-direction: column;
+                        margin-top: 30px;
+
+                    }
+
+                    &-content:nth-of-type(3){
+                        margin-top: 30px;
+                        position: relative;
+                        top: 0;
+                        left: 0;
+                        width: 86vw;
+                        display: flex;
+                        flex-direction: column;
+                    }
+
+                    &-content{
+                        padding: 10px;
+                        &-title{
+                            margin-left: 0px;
+                        }
+                    }
+                }
+            }
+
+
+        }
 
     }
 }
@@ -1183,6 +1403,22 @@
             }
         }
     }
+
+    @media screen and (max-width:520px){
+        width: 100vw;
+        &-container{
+            .single-country-transports-content{
+                &-description{
+                    font-size: 14px;
+                    line-height: 21px;
+                }
+
+                img{
+                    display: none;
+                }
+            }
+        }
+    }
 }
 
 .single-country-life{
@@ -1265,6 +1501,22 @@
                 &-description{
                     font-size: 17px;
                     line-height: 32px;
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width:520px){
+        width: 100vw;
+        &-container{
+            .single-country-life-content{
+                &-description{
+                    font-size: 14px;
+                    line-height: 21px;
+                }
+
+                img{
+                    display: none;
                 }
             }
         }
