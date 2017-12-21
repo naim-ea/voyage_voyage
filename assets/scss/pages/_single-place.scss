@@ -11,6 +11,7 @@
     .single-place-title {
       grid-column-start: left;
       grid-column-end: left2;
+      grid-row-start: start;
       display: flex;
       flex-direction: column;
       align-items: flex-end;
@@ -21,6 +22,7 @@
       opacity: 0;
       animation: enter-anim-second 0.8s ease-out 0.6s;
       animation-fill-mode: forwards;
+      z-index: 1;
 
       @keyframes enter-anim-second {
         0% {
@@ -74,10 +76,12 @@
     .single-place-img {
       grid-column-start: left2;
       grid-column-end: end;
+      grid-row-start: start;
       transform: translateY(50px);
       opacity: 0;
       animation: enter-anim 0.6s ease-out;
       animation-fill-mode: forwards;
+      z-index: 0;
 
       @keyframes enter-anim {
         0% {
@@ -436,6 +440,7 @@
     @media screen and (max-width: 1024px) {
       .container {
         grid-template-rows: [start] 1100px [part2] 500px [video] 500px [space] 150px [fact] 1200px [cooking] 900px [space] 50px [clothes] 950px [space] 100px [climate] 1400px [wildlife] 1600px;
+        
         .single-place-title {
           grid-column-end: right;
           padding: 0;
@@ -470,6 +475,12 @@
         }
       }
     }
+  }
+
+  @media screen and (max-width:1200px) {
+      .container{
+        grid-template-rows: [start] 100% [space] 100px [part2] 50vh [video] 100vh [space] 50px [fact] 100vh [space] 50px [cooking] 100vh [space] 50px [clothes] 100vh [space] 50px [climate] 100vh [space] 200px [wildlife] 120vh;
+      }
   }
 
   @media screen and (max-width:1024px) {
