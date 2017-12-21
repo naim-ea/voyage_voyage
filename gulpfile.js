@@ -127,7 +127,7 @@ gulp.task('fonts', () => {
 // Include HTML files into dist folder under the name of index.html 
 gulp.task('fileinclude', function () {
   gulp
-    .src(`${config.assets}/index.html`)
+    .src(`${config.assets}/*.html`)
     .pipe(plugin.fileInclude({
       prefix: '@@',
       basepath: '@file'
