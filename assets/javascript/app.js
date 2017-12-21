@@ -92,6 +92,9 @@ DOM.singleCountryTransports = document.querySelector('.single-country-transports
 DOM.singleCountryTranslatePlayer = document.querySelector('.single-country-sounds-translations-player')
 DOM.singleCountryTranslateButton = document.querySelectorAll('.single-country-sounds-translations-element .other-language')
 DOM.singleCountryVideo = document.querySelector('.single-country-famous-video')
+DOM.singleCountrySpeaker = document.querySelector('.single-country-speaker')
+DOM.singleCountrySpeakerAudio = document.querySelector('.single-country-speaker audio')
+DOM.singleCountrySpeakerImg = document.querySelector('.single-country-speaker img')
 
 // Place page selector
 DOM.singlePlace = document.querySelector('.single-place')
@@ -198,9 +201,11 @@ if (DOM.singleCountry != null) {
   const handlerSingleCountry = onVisibilityChange(DOM.singleCountryVideo, () => { // Handle the video
     if (isElementInViewport(DOM.singleCountryVideo) == true) {
       DOM.singleCountryVideo.play()
-      DOM.singleCountryVideo.volume = 0.5
+      DOM.singleCountryVideo.volume = 0.9
+      DOM.singleCountrySpeakerAudio.pause()
     } else {
       DOM.singleCountryVideo.pause()
+      DOM.singleCountrySpeakerAudio.play()
     }
   })
 
@@ -215,6 +220,159 @@ if (DOM.singleCountry != null) {
     attachEvent('onscroll', handlerSingleCountry)
     attachEvent('onresize', handlerSingleCountry)
   }
+
+  // Anthem player
+  DOM.anthemPlayPause = document.querySelector('#playPause')
+  DOM.anthemPlaypauseBtn = document.querySelector('.single-country-sounds-anthem-content-play')
+  DOM.anthemProgress = document.querySelector('.single-country-sounds-anthem-content-bar-full')
+  DOM.anthemSliders = document.querySelectorAll('.slider')
+  DOM.anthemPlayer = document.querySelector('audio')
+  DOM.anthemCurrentTime = document.querySelector('.current-time')
+
+  let draggableClasses = ['pin']
+  let currentlyDragged = null
+
+  window.addEventListener('mousedown', function(event) {
+
+    if (!isDraggable(event.target)) return false
+
+    currentlyDragged = event.target
+    let handleMethod = currentlyDragged.dataset.method
+
+    this.addEventListener('mousemove', window[handleMethod], false)
+
+    window.addEventListener('mouseup', () => {
+      currentlyDragged = false
+      window.removeEventListener('mousemove', window[handleMethod], false)
+    }, false)
+  })
+
+  DOM.anthemPlaypauseBtn.addEventListener('click', togglePlay)
+  DOM.anthemPlayer.addEventListener('timeupdate', updateProgress)
+  DOM.anthemPlayer.addEventListener('canplay', makePlay)
+  DOM.anthemPlayer.addEventListener('ended', function() {
+    DOM.anthemPlayPause.attributes.d.value = "M18 12L0 24V0"
+  })
+
+
+  DOM.anthemSliders.forEach(slider => {
+    let pin = slider.querySelector('.pin')
+    slider.addEventListener('click', window[pin.dataset.method])
+  })
+
+  function isDraggable(el) {
+    let canDrag = false
+    let classes = Array.from(el.classList)
+    draggableClasses.forEach(draggable => {
+      if (classes.indexOf(draggable) !== -1)
+        canDrag = true
+    })
+    return canDrag
+  }
+
+  function inRange(event) {
+    let rangeBox = getRangeBox(event)
+    let rect = rangeBox.getBoundingClientRect()
+    let direction = rangeBox.dataset.direction
+    if (direction == 'horizontal') {
+      let min = rangeBox.offsetLeft
+      let max = min + rangeBox.offsetWidth
+      if (event.clientX < min || event.clientX > max) return false
+    } else {
+      let min = rect.top
+      let max = min + rangeBox.offsetHeight
+      if (event.clientY < min || event.clientY > max) return false
+    }
+    return true
+  }
+
+  function updateProgress() {
+    let current = DOM.anthemPlayer.currentTime
+    let percent = (current / DOM.anthemPlayer.duration) * 100
+    DOM.anthemProgress.style.width = percent + '%'
+  }
+
+  function getRangeBox(event) {
+    let rangeBox = event.target
+    let el = currentlyDragged
+    if (event.type == 'click' && isDraggable(event.target)) {
+      rangeBox = event.target.parentElement.parentElement
+    }
+    if (event.type == 'mousemove') {
+      rangeBox = el.parentElement.parentElement
+    }
+    return rangeBox
+  }
+
+  function getCoefficient(event) {
+    let slider = getRangeBox(event)
+    let rect = slider.getBoundingClientRect()
+    let K = 0
+    if (slider.dataset.direction == 'horizontal') {
+
+      let offsetX = event.clientX - slider.offsetLeft
+      let width = slider.clientWidth
+      K = offsetX / width
+
+    } else if (slider.dataset.direction == 'vertical') {
+
+      let height = slider.clientHeight
+      let offsetY = event.clientY - rect.top
+      K = 1 - offsetY / height
+
+    }
+    return K
+  }
+
+  function rewind(event) {
+    if (inRange(event)) {
+      DOM.anthemPlayer.currentTime = DOM.anthemPlayer.duration * getCoefficient(event)
+    }
+  }
+
+  function changeVolume(event) {
+    if (inRange(event)) {
+      DOM.anthemPlayer.volume = getCoefficient(event)
+    }
+  }
+
+  function formatTime(time) {
+    let min = Math.floor(time / 60)
+    let sec = Math.floor(time % 60)
+    return min + ':' + ((sec < 10) ? ('0' + sec) : sec)
+  }
+
+  function togglePlay() {
+    if (DOM.anthemPlayer.paused) {
+      DOM.anthemPlayPause.attributes.d.value = "M0 0h6v24H0zM12 0h6v24h-6z"
+      DOM.anthemPlayer.play()
+      DOM.singleCountrySpeakerAudio.pause()
+      DOM.anthemPlayer.volume = 0.4
+    } else {
+      DOM.anthemPlayPause.attributes.d.value = "M18 12L0 24V0"
+      DOM.anthemPlayer.pause()
+      DOM.singleCountrySpeakerAudio.play()
+    }
+  }
+
+  function makePlay() {
+    DOM.anthemPlaypauseBtn.style.display = 'block'
+  }
+
+  DOM.singleCountrySpeaker.addEventListener('click', () => {
+
+    if (DOM.singleCountrySpeaker.classList.contains('active')) {
+      DOM.singleCountrySpeaker.classList.remove('active')
+      DOM.singleCountrySpeakerImg.src = '../img/speaker_off.svg'
+      DOM.singleCountrySpeakerAudio.muted = true
+    } else {
+      DOM.singleCountrySpeaker.classList.add('active')
+      DOM.singleCountrySpeakerImg.src = '../img/speaker.svg'
+      DOM.singleCountrySpeakerAudio.muted = false
+    }
+
+  })
+
 }
 
 if (DOM.singlePlace != null) {
@@ -247,11 +405,12 @@ if (DOM.singlePlace != null) {
   sr.reveal('.single-place-climate-title', { duration: 1000, origin: 'left' })
   sr.reveal('.single-place-climate-content-seasons', { duration: 1000, origin: 'left' })
   sr.reveal('.single-place-climate-content-weather', { duration: 1000, origin: 'left' })
+  sr.reveal('.single-place-climate-img', { duration: 1000, origin: 'right' })
 
   // Climate
   sr.reveal('.single-place-wildlife-title', { duration: 1000, origin: 'left' })
   sr.reveal('.single-place-wildlife-description', { duration: 1000, origin: 'left' })
-  sr.reveal('.single-place-wildlife-img', { duration: 1000, origin: 'left' })
+  sr.reveal('.single-place-wildlife-img', { duration: 1000, origin: 'right' })
 
   const handlerSinglePlace = onVisibilityChange(DOM.singlePlaceVideo, () => { // Handle the video
     if (isElementInViewport(DOM.singlePlaceVideo) == true) {
@@ -299,11 +458,11 @@ if (DOM.singlePlace != null) {
   }
 
   // Init streetview
-  let streetviewGps = { lat: Number(DOM.singlePlaceButtonStreetview[0].getAttribute('data-lat')), lng: Number(DOM.singlePlaceButtonStreetview[0].getAttribute('data-long')) };
+  let streetviewGps = { lat: Number(DOM.singlePlaceButtonStreetview[0].getAttribute('data-lat')), lng: Number(DOM.singlePlaceButtonStreetview[0].getAttribute('data-long')) }
   let streetview = new google.maps.StreetViewPanorama(DOM.singlePlaceStreetviewMap, {
     position: streetviewGps,
     streetViewControl: true,
-  });
+  })
 
   // Event button ENTER street view
   DOM.singlePlaceButtonStreetview.forEach((elButtonStreetview, indexButtonStreetview) => {
@@ -317,7 +476,7 @@ if (DOM.singlePlace != null) {
   DOM.singlePlaceButtonStreetviewExit.addEventListener('click', () => {
     DOM.singlePlaceStreetview.classList.remove('active')
     // DOM.singlePlaceStreetviewMap.classList.remove('active')
-  });
+  })
 
   // Event button Play/Pause sound
 
@@ -327,14 +486,14 @@ if (DOM.singlePlace != null) {
       DOM.singlePlaceSpeaker.classList.remove('active')
       DOM.singlePlaceSpeakerImg.src = '../img/speaker_off.svg'
       Array.prototype.slice.call(document.querySelectorAll('audio')).forEach(function(audio) {
-      audio.muted = true;
-    });
+        audio.muted = true
+      })
     } else {
       DOM.singlePlaceSpeaker.classList.add('active')
       DOM.singlePlaceSpeakerImg.src = '../img/speaker.svg'
       Array.prototype.slice.call(document.querySelectorAll('audio')).forEach(function(audio) {
-      audio.muted = false;
-    });
+        audio.muted = false
+      })
     }
 
   })
