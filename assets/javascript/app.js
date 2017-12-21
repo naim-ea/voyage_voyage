@@ -103,6 +103,7 @@ DOM.singlePlaceStreetview = document.querySelector('.single-place-streetview-are
 DOM.singlePlaceStreetviewMap = document.querySelector('.single-place-streetview-area-map')
 DOM.singlePlaceButtonStreetview = document.querySelectorAll('.single-place-streetview-button')
 DOM.singlePlaceButtonStreetviewExit = document.querySelector('.single-place-streetview-area-backtoplace')
+DOM.singlePlaceStreetviewAudio = document.querySelector('.single-place-streetview-area audio')
 DOM.singlePlaceSpeaker = document.querySelector('.single-place-speaker')
 DOM.singlePlaceSpeakerAudio = document.querySelector('.single-place-speaker audio')
 DOM.singlePlaceSpeakerImg = document.querySelector('.single-place-speaker img')
@@ -375,11 +376,11 @@ if (DOM.singleCountry != null) {
 
     if (DOM.singleCountrySpeaker.classList.contains('active')) {
       DOM.singleCountrySpeaker.classList.remove('active')
-      DOM.singleCountrySpeakerImg.src = '../img/speaker_off.svg'
+      DOM.singleCountrySpeakerImg.src = 'img/speaker_off.svg'
       DOM.singleCountrySpeakerAudio.muted = true
     } else {
       DOM.singleCountrySpeaker.classList.add('active')
-      DOM.singleCountrySpeakerImg.src = '../img/speaker.svg'
+      DOM.singleCountrySpeakerImg.src = 'img/speaker.svg'
       DOM.singleCountrySpeakerAudio.muted = false
     }
 
@@ -485,6 +486,9 @@ if (DOM.singlePlace != null) {
   DOM.singlePlaceButtonStreetview.forEach((elButtonStreetview, indexButtonStreetview) => {
     elButtonStreetview.addEventListener('click', () => {
       DOM.singlePlaceStreetview.classList.add('active')
+      DOM.singlePlaceStreetviewAudio.play()
+      DOM.singlePlaceStreetviewAudio.volume = 0.6
+      DOM.singlePlaceSpeakerAudio.volume = 0.3
       // DOM.singlePlaceStreetviewMap.classList.add('active')
     })
   })
@@ -492,6 +496,8 @@ if (DOM.singlePlace != null) {
   // Event button EXIT street view
   DOM.singlePlaceButtonStreetviewExit.addEventListener('click', () => {
     DOM.singlePlaceStreetview.classList.remove('active')
+    DOM.singlePlaceStreetviewAudio.pause()
+    DOM.singlePlaceSpeakerAudio.volume = 1
     // DOM.singlePlaceStreetviewMap.classList.remove('active')
   })
 
@@ -501,16 +507,12 @@ if (DOM.singlePlace != null) {
 
     if (DOM.singlePlaceSpeaker.classList.contains('active')) {
       DOM.singlePlaceSpeaker.classList.remove('active')
-      DOM.singlePlaceSpeakerImg.src = '../img/speaker_off.svg'
-      Array.prototype.slice.call(document.querySelectorAll('audio')).forEach(function(audio) {
-        audio.muted = true
-      })
+      DOM.singlePlaceSpeakerImg.src = 'img/speaker_off.svg'
+      DOM.singlePlaceSpeakerAudio.muted = true
     } else {
       DOM.singlePlaceSpeaker.classList.add('active')
-      DOM.singlePlaceSpeakerImg.src = '../img/speaker.svg'
-      Array.prototype.slice.call(document.querySelectorAll('audio')).forEach(function(audio) {
-        audio.muted = false
-      })
+      DOM.singlePlaceSpeakerImg.src = 'img/speaker.svg'
+      DOM.singlePlaceSpeakerAudio.muted = false
     }
 
   })
