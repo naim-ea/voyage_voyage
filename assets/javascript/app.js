@@ -96,9 +96,10 @@ DOM.singleCountryVideo = document.querySelector('.single-country-famous-video')
 // Place page selector
 DOM.singlePlace = document.querySelector('.single-place')
 DOM.singlePlaceVideo = document.querySelector('.single-place-video video')
-DOM.singlePlaceStreetview = document.querySelector('.single-place-title-streetview')
-DOM.singlePlaceButtonStreetview = document.querySelector('.single-place-title-button-content')
-DOM.singlePlaceButtonStreetviewExit = document.querySelector('.single-place-title-button-content-exit')
+DOM.singlePlaceStreetview = document.querySelector('.single-place-streetview-area')
+DOM.singlePlaceStreetviewMap = document.querySelector('.single-place-streetview-area-map')
+DOM.singlePlaceButtonStreetview = document.querySelectorAll('.single-place-streetview-button')
+DOM.singlePlaceButtonStreetviewExit = document.querySelector('.single-place-streetview-area-backtoplace')
 
 // Country page
 if (DOM.singleCountry != null) {
@@ -268,28 +269,22 @@ if (DOM.singlePlace != null) {
   }
 
   // Init streetview
-  // let streetviewGps = { lat: elTranslateButton.getAttribute('data-lat'), lng: elTranslateButton.getAttribute('data-long') };
-  // let streetview = new google.maps.Map(DOM.singlePlaceStreetview, {
-  //   zoom: 3,
-  //   streetViewControl: true,
-  // });
-  // let streetviewPanorama = map.getStreetView();
-  // streetviewPanorama.setPosition(streetviewGps);
-  // streetviewPanorama.setPov( /** @type {google.maps.StreetViewPov} */ ({
-  //   heading: 265,
-  //   pitch: 0
-  // }));
+  let streetviewGps = { lat: Number(DOM.singlePlaceButtonStreetview[0].getAttribute('data-lat')), lng: Number(DOM.singlePlaceButtonStreetview[0].getAttribute('data-long')) };
+  let streetview = new google.maps.StreetViewPanorama(DOM.singlePlaceStreetviewMap, {
+    position: streetviewGps,
+    streetViewControl: true,
+  });
 
-  // // Event button ENTER street view
-  // DOM.singlePlaceButtonStreetview.addEventListener('click', () => {
-  //   streetviewPanorama.setPosition(streetviewGps);
-  //   panorama.setVisible(true);
-  //   DOM.singlePlaceStreetview.classList.add('active')
-  // });
+  // Event button ENTER street view
+  DOM.singlePlaceButtonStreetview.forEach((elButtonStreetview, indexButtonStreetview) => {
+    elButtonStreetview.addEventListener('click', () => {
+      DOM.singlePlaceStreetview.classList.add('active')
+      DOM.singlePlaceStreetviewMap.style.position = "fixed !important"
+    })
+  })
 
-  // // Event button EXIT street view
-  // DOM.singlePlaceButtonStreetviewExit.addEventListener('click', () => {
-  //   DOM.singlePlaceStreetview.classList.remove('active')
-  //   panorama.setVisible(false);
-  // });
+  // Event button EXIT street view
+  DOM.singlePlaceButtonStreetviewExit.addEventListener('click', () => {
+    DOM.singlePlaceStreetview.classList.remove('active')
+  });
 }
