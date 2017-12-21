@@ -1,6 +1,7 @@
 .single-place {
   background: $white-alt;
   width: 100vw;
+  overflow-x: hidden;
 
   .container {
     width: 90%;
@@ -423,7 +424,7 @@
           margin-top: 800px;
         }
         .single-place-cooking-text {
-          margin-left: 0px;
+            margin-left: 50px;
         }
         .single-place-wildlife {
           margin-top: 1050px;
@@ -436,6 +437,9 @@
         grid-template-rows: [start] 1000px [part2] 500px [video] 580px [fact] 1100px [space] 50px [cooking] 1100px [space] 200px [clothes] 800px [space] 100px [climate] 1200px [space] 50px [wildlife] 1600px;
         .single-place-fact {
           margin-top: 800px;
+        }
+        .single-place-cooking-text {
+            margin-left: -100px;
         }
         .single-place-wildlife {
           margin-top: 800px;
@@ -915,6 +919,7 @@
   left: 10;
   background-color: $white;
   transition: all 0.4s ease-out;
+  overflow-x: hidden;
 
   &.active {
     transition: all 0.4s ease-out;

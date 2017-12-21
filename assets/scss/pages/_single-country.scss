@@ -5,6 +5,7 @@
     grid-template-columns: [column1] 100px [middle] auto [column2] 100px [end];
     transform: translateX(0);
     transition: all 0.4s ease-out;
+    overflow-x: hidden;
 
     &.active{
         transition: all 0.4s ease-out;
@@ -1359,6 +1360,7 @@
     right: 0;
     transform: translateX(100vw);
     transition: all 0.4s ease-out;
+    overflow-x: hidden;
 
     &.active{
         transition: all 0.4s ease-out;
@@ -1475,6 +1477,7 @@
     right: 0;
     transform: translateX(100vw);
     transition: all 0.4s ease-out;
+    overflow-x: hidden;
 
     &.active{
         transition: all 0.4s ease-out;
