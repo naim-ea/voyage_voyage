@@ -487,7 +487,7 @@ if (DOM.singlePlace != null) {
     elButtonStreetview.addEventListener('click', () => {
       DOM.singlePlaceStreetview.classList.add('active')
       DOM.singlePlaceStreetviewAudio.play()
-      DOM.singlePlaceStreetviewAudio.volume = 0.6
+      DOM.singlePlaceStreetviewAudio.volume = 0.7
       DOM.singlePlaceSpeakerAudio.volume = 0.3
       // DOM.singlePlaceStreetviewMap.classList.add('active')
     })
