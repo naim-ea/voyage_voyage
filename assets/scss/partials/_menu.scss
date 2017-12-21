@@ -121,4 +121,11 @@
     position: fixed;
     top: 18px;
     left: 80px;
+
+    span:first-of-type{
+        img{
+            width: 30px;
+            height: auto;
+        }
+    }
 }
