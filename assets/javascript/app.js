@@ -107,8 +107,20 @@ DOM.singlePlaceSpeaker = document.querySelector('.single-place-speaker')
 DOM.singlePlaceSpeakerAudio = document.querySelector('.single-place-speaker audio')
 DOM.singlePlaceSpeakerImg = document.querySelector('.single-place-speaker img')
 
+// Menu
+DOM.menuElementsBacktomap = document.querySelector('.menu-bg-content-elements-backToMap')
+DOM.menuElementsBacktocountry = document.querySelector('.menu-bg-content-elements-backToCountry')
+DOM.menuElementsBacktocontent = document.querySelector('.menu-backto-content')
+DOM.menuElementsBacktolink = document.querySelector('.menu-backto-link')
+
+
 // Country page
 if (DOM.singleCountry != null) {
+  // Menu 
+  DOM.menuElementsBacktocountry.style.display = 'none'
+  DOM.menuElementsBacktocontent.innerHTML = 'Carte'
+  DOM.menuElementsBacktolink.setAttribute("href", "index.html")
+
   // Scroll reveal
   window.sr = ScrollReveal()
   // Hero
@@ -376,6 +388,11 @@ if (DOM.singleCountry != null) {
 }
 
 if (DOM.singlePlace != null) {
+  // Menu
+  // DOM.menuElementsBacktocountry.style.display = 'none'
+  DOM.menuElementsBacktocontent.innerHTML = 'Inde'
+  DOM.menuElementsBacktolink.setAttribute("href", "inde.html");
+
   // Scroll reveal
   window.sr = ScrollReveal()
   // Description
