@@ -22,11 +22,11 @@
                 <div class="single-place-title-img">
                     <h2>मुंबई</h2>
                 </div>
-                <div class="single-place-title-button">
+                <div class="single-place-title-button single-place-streetview-button" data-long="72.834654" data-lat="18.9219841">
                     <span class="single-place-title-button-icon">
                         <img src="../img/streetview.png" alt="">
                     </span>
-                    <span class="single-place-title-button-content" data-long="72.877656" data-lat="19.075984">
+                    <span class="single-place-title-button-content">
                         Balade-toi dans la ville !
                     </span>
                     
@@ -144,7 +144,7 @@
             <img src="../img/speaker.svg" alt="">
         </div>
         
-        <div class="single-place-streetview">
+        <div class="single-place-streetview single-place-streetview-button" data-long="72.834654" data-lat="18.9219841">
             <span class="single-place-streetview-icon">
                 <img src="../img/streetview.png" alt="">
             </span>
@@ -154,6 +154,7 @@
         </div>
         
         <div class="single-place-streetview-area">
+            <div class="single-place-streetview-area-map"></div>
             <div class="single-place-streetview-area-backtoplace">
                 <span class="icon"><img src="../img/close.png" alt=""></span> 
                 <span class="text">Fermer</span>      
@@ -162,6 +163,8 @@
 
         @@include('views/partials/menu.html')   
         
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKsa7On1pBp-TNEkU_HTbDButh8V6IlP4">
+        </script>
         <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
         <script src="js/app.min.js" charset="utf-8"></script>
     </body>

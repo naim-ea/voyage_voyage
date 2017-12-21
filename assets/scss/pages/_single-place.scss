@@ -705,17 +705,31 @@
 }
 
 .single-place-streetview-area{
-    position: absolute;
-    width: 90vw;
-    height: 90vh;
+    position: fixed;
+    width: 97vw;
+    height: 95vh;
     transform: translateX(-100vw);
-    display: none;
-    top: 70vh;
+    z-index: 3;
+    // display: none;
+    top: 2.5vh;
+    left: 1.5vw;
+    background-color: $white;
+    transition: all 0.4s ease-out;
+
+    &.active{
+        transition: all 0.4s ease-out;
+        transform: translateX(0);
+    }
+
+    &-map{
+        position: static !important;
+    }
 
     &-backtoplace{
+        z-index: 10;
         position: absolute;
         top: 20px;
-        left: 20px;
+        right: 20px;
         display: flex;
         align-items: center;
         justify-content: space-around;
