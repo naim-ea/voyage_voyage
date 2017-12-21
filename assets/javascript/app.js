@@ -100,6 +100,9 @@ DOM.singlePlaceStreetview = document.querySelector('.single-place-streetview-are
 DOM.singlePlaceStreetviewMap = document.querySelector('.single-place-streetview-area-map')
 DOM.singlePlaceButtonStreetview = document.querySelectorAll('.single-place-streetview-button')
 DOM.singlePlaceButtonStreetviewExit = document.querySelector('.single-place-streetview-area-backtoplace')
+DOM.singlePlaceSpeaker = document.querySelector('.single-place-speaker')
+DOM.singlePlaceSpeakerAudio = document.querySelector('.single-place-speaker audio')
+DOM.singlePlaceSpeakerImg = document.querySelector('.single-place-speaker img')
 
 // Country page
 if (DOM.singleCountry != null) {
@@ -199,7 +202,6 @@ if (DOM.singleCountry != null) {
     } else {
       DOM.singleCountryVideo.pause()
     }
-
   })
 
   if (window.addEventListener) { // Event listener when viewport changing
@@ -249,11 +251,22 @@ if (DOM.singlePlace != null) {
   const handlerSinglePlace = onVisibilityChange(DOM.singlePlaceVideo, () => { // Handle the video
     if (isElementInViewport(DOM.singlePlaceVideo) == true) {
       DOM.singlePlaceVideo.play()
+      DOM.singlePlaceSpeakerAudio.pause()
       DOM.singlePlaceVideo.volume = 0.5
     } else {
       DOM.singlePlaceVideo.pause()
+      DOM.singlePlaceSpeakerAudio.play()
     }
+  })
 
+  const handlerStreetViewButton = onVisibilityChange(DOM.singlePlaceButtonStreetview[0], () => { // Handle the video
+    if (isElementInViewport(DOM.singlePlaceButtonStreetview[0]) == true) {
+      DOM.singlePlaceButtonStreetview[0].classList.add('active')
+      DOM.singlePlaceButtonStreetview[1].classList.remove('active')
+    } else {
+      DOM.singlePlaceButtonStreetview[0].classList.remove('active')
+      DOM.singlePlaceButtonStreetview[1].classList.add('active')
+    }
   })
 
   if (window.addEventListener) { // Event listener when viewport changing
@@ -268,6 +281,18 @@ if (DOM.singlePlace != null) {
     attachEvent('onresize', handlerSinglePlace)
   }
 
+  if (window.addEventListener) { // Event listener when viewport changing
+    addEventListener('DOMContentLoaded', handlerStreetViewButton, false)
+    addEventListener('load', handlerStreetViewButton, false)
+    addEventListener('scroll', handlerStreetViewButton, false)
+    addEventListener('resize', handlerStreetViewButton, false)
+  } else if (window.attachEvent) {
+    attachEvent('onDOMContentLoaded', handlerStreetViewButton) // IE9+
+    attachEvent('onload', handlerStreetViewButton)
+    attachEvent('onscroll', handlerStreetViewButton)
+    attachEvent('onresize', handlerStreetViewButton)
+  }
+
   // Init streetview
   let streetviewGps = { lat: Number(DOM.singlePlaceButtonStreetview[0].getAttribute('data-lat')), lng: Number(DOM.singlePlaceButtonStreetview[0].getAttribute('data-long')) };
   let streetview = new google.maps.StreetViewPanorama(DOM.singlePlaceStreetviewMap, {
@@ -279,12 +304,33 @@ if (DOM.singlePlace != null) {
   DOM.singlePlaceButtonStreetview.forEach((elButtonStreetview, indexButtonStreetview) => {
     elButtonStreetview.addEventListener('click', () => {
       DOM.singlePlaceStreetview.classList.add('active')
-      DOM.singlePlaceStreetviewMap.style.position = "fixed !important"
+      // DOM.singlePlaceStreetviewMap.classList.add('active')
     })
   })
 
   // Event button EXIT street view
   DOM.singlePlaceButtonStreetviewExit.addEventListener('click', () => {
     DOM.singlePlaceStreetview.classList.remove('active')
+    // DOM.singlePlaceStreetviewMap.classList.remove('active')
   });
+
+  // Event button Play/Pause sound
+
+  DOM.singlePlaceSpeaker.addEventListener('click', () => {
+
+    if (DOM.singlePlaceSpeaker.classList.contains('active')) {
+      DOM.singlePlaceSpeaker.classList.remove('active')
+      DOM.singlePlaceSpeakerImg.src = '../img/speaker_off.svg'
+      Array.prototype.slice.call(document.querySelectorAll('audio')).forEach(function(audio) {
+      audio.muted = true;
+    });
+    } else {
+      DOM.singlePlaceSpeaker.classList.add('active')
+      DOM.singlePlaceSpeakerImg.src = '../img/speaker.svg'
+      Array.prototype.slice.call(document.querySelectorAll('audio')).forEach(function(audio) {
+      audio.muted = false;
+    });
+    }
+
+  })
 }
