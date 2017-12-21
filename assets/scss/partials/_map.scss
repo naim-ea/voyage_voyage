@@ -11,4 +11,9 @@ a[href^="https://maps.google.com/maps"]{display:none !important}
 #map{
     cursor: pointer;
     overflow: hidden;
+    height: 60vh;
+
+    @media screen and (max-width:520px){
+        height: 45vh;
+    }
 }

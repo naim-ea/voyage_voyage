@@ -9,6 +9,7 @@
     display: grid;
     grid-template-columns: [left] 40% [left2] 10% [right] 50% [container2];
     grid-template-rows: [start] 100% [space] 100px [part2] 50vh [video] 100vh [space] 50px [fact] 100vh [space] 50px [cooking] 100vh [space] 50px [clothes] 100vh [space] 50px [climate] 100vh [space] 50px [wildlife] 120vh;
+
     .single-place-title {
       grid-column-start: left;
       grid-column-end: left2;
@@ -451,7 +452,7 @@
   &.bangalore {
     @media screen and (max-width: 1024px) {
       .container {
-        grid-template-rows: [start] 1100px [part2] 500px [video] 500px [space] 150px [fact] 1200px [cooking] 900px [space] 50px [clothes] 950px [space] 100px [climate] 1400px [wildlife] 1600px;
+        grid-template-rows: [start] 1100px [part2] 500px [video] 500px [space] 150px [fact] 1200px [cooking] 900px [space] 50px [clothes] 950px [space] 100px [climate] 1400px [wildlife] 1450px [end];
         
         .single-place-title {
           grid-column-end: right;
@@ -470,9 +471,15 @@
           margin-top: 50px;
         }
 
-        .single-place-wildlife {
-          margin-top: 800px;
+        .single-place-wildlife-img {
+          margin-top: 700px;
+          grid-row-end: end;
+          height: auto;
         }
+
+        .single-place-wildlife {
+            margin-top: 0px;
+          }
       }
     }
 
@@ -483,7 +490,7 @@
           margin-top: 700px;
         }
         .single-place-wildlife {
-          margin-top: 600px;
+          margin-top: 0px;
         }
       }
     }
