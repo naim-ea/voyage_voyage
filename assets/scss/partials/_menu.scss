@@ -38,6 +38,15 @@
                 & a{
                     text-decoration: none;
                 }
+
+                &.menu-bg-content-elements-logo{
+                    text-align: center;
+                    margin: 60px 0px;
+                    img{
+                        width: 50%;
+                        height: auto;
+                    }
+                }
             }
         }
     }
